@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>All Trips - Travel Diary</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <script src="js/travelData.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #F2F0E9;
+            --sidebar-bg: #4A403A;
+            --card-bg: #FFFFFF;
+            --text-color: #463F3A;
+            --sub-text: #888888;
+            --accent-color: #8D7B68;
+            --border-color: #E6E2D6;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", "Noto Sans TC", Arial, sans-serif; margin: 0; padding: 30px 20px; }
+
+        .main-container { width: 100%; max-width: 600px; margin: 0 auto; }
+
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .back-btn { text-decoration: none; color: var(--sub-text); font-weight: bold; display: flex; align-items: center; gap: 6px; transition: 0.2s; font-size: 0.8rem;}
+        .back-btn:hover { color: var(--text-color); }
+        
+        .header-title-box { text-align: right; }
+        .header-title-box h1 { margin: 0; font-size: 1.5rem; font-weight: 900; color: var(--text-color); }
+        .header-title-box .sub { font-size: 0.75rem; color: var(--sub-text); margin-top: 4px; font-weight: bold; letter-spacing: 1px; }
+
+        .year-section { margin-bottom: 40px; animation: fadeInSlide 0.3s ease forwards; opacity: 0; }
+        .year-title { font-size: 1.25rem; font-weight: 900; color: var(--sidebar-bg); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin: 30px 0 25px 0; display: block; }
+        .year-section:first-child .year-title { margin-top: 0; }
+
+        .trip-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; width: 100%; margin-bottom: 15px; text-decoration: none; color: var(--text-color); transition: transform 0.2s, box-shadow 0.2s; display: block; box-shadow: 0 4px 10px rgba(74, 64, 58, 0.05); position: relative; overflow: hidden; }
+        .trip-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background-color: var(--accent-color); opacity: 0.8; }
+        .trip-card:active, .trip-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(74, 64, 58, 0.1); }
+        .trip-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .trip-date { color: var(--accent-color); font-size: 0.9em; font-weight: bold; letter-spacing: 0.5px; }
+        
+        /* === Trip Status Badges === */
+        .trip-status { font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; font-weight: bold; letter-spacing: 0.5px; }
+        .status-planning { background-color: #EDF1E8; color: #5B6B45; }
+        .status-upcoming { background-color: #FDF3E7; color: #A66E38; }
+        .status-traveling { background-color: #EBF2F6; color: #4A657A; }
+        .status-completed { background-color: #F2F0E9; color: #999999; }
+
+        .trip-title { font-size: 1.25em; font-weight: bold; margin-bottom: 4px; color: #2c2520; }
+        
+        .trip-subtitle { color: var(--sub-text); font-size: 0.9em; display: flex; align-items: center; justify-content: space-between;}
+        .country-tag { font-size: 0.75rem; background: #f5f5f5; padding: 2px 8px; border-radius: 10px; font-weight: bold; color: #999; letter-spacing: 0.5px;}
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="header">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Dashboard</a>
+            <div class="header-title-box">
+                <h1>All Trips</h1>
+                <div class="sub">All Your Trips</div>
+            </div>
+        </div>
+
+        <div id="archive-list"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('archive-list');
+            
+            // ★ 提取「所有旅行紀錄」(包含 Planning, Upcoming, Traveling, Completed)
+            const allTrips = TravelUtils.getAllTrips();
+
+            if (allTrips.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align:center; margin-top:50px; color:#888;">
+                        <i class="fas fa-box-open" style="font-size:3rem; opacity:0.3; margin-bottom:15px;"></i>
+                        <h3 style="margin:0;">無旅行紀錄</h3>
+                        <p style="font-size:0.85rem;">目前尚未有任何旅程資料。</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const groupedData = allTrips.reduce((acc, trip) => {
+                const year = trip.start.substring(0, 4);
+                if (!acc[year]) acc[year] = [];
+                acc[year].push(trip);
+                return acc;
+            }, {});
+
+            const sortedYears = Object.keys(groupedData).sort((a, b) => b - a);
+
+            let htmlStr = "";
+            let delay = 0;
+
+            sortedYears.forEach(year => {
+                htmlStr += `<div class="year-section" style="animation-delay: ${delay}s">
+                                <div class="year-title">${year}</div>`;
+                
+                groupedData[year].forEach(t => {
+                    htmlStr += TravelUtils.generateTripCard(t, true);
+                });
+                
+                htmlStr += `</div>`;
+                delay += 0.1;
+            });
+
+            container.innerHTML = htmlStr;
+        });
+    </script>
+</body>
+</html>

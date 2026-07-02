@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>沖繩 4 天 3 夜快樂行</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 font-size=%2280%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>🐬</text></svg>">
+    
+    <!-- 引入 Font Awesome 與 共用 CSS (已移除所有內聯樣式) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/travel.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ================= 統一 Sidebar ================= -->
+    <nav class="sidebar">
+        <div class="menu-item active" onclick="showPage('day1')">
+            <i class="fas fa-plane-arrival"></i><span>Day 1</span>
+        </div>
+        <div class="menu-item" onclick="showPage('day2')">
+            <i class="fas fa-camera"></i><span>Day 2</span>
+        </div>
+        <div class="menu-item" onclick="showPage('day3')">
+            <i class="fas fa-shopping-bag"></i><span>Day 3</span>
+        </div>
+        <div class="menu-item" onclick="showPage('day4')">
+            <i class="fas fa-plane-departure"></i><span>Day 4</span>
+        </div>
+        <div class="menu-item" onclick="showPage('aquarium-tips')">
+            <i class="fas fa-fish"></i><span>水族館</span>
+        </div>
+        <div class="menu-item" onclick="showPage('shopping')">
+            <i class="fas fa-shopping-cart"></i><span>購物</span>
+        </div>
+        <div class="menu-item" onclick="showPage('money')">
+            <i class="fas fa-calculator"></i><span>匯率</span>
+        </div>
+        <div class="menu-item" onclick="showPage('sos')">
+            <i class="fas fa-exclamation-triangle"></i><span>緊急</span>
+        </div>
+    </nav>
+
+    <!-- ================= 右側內容區 ================= -->
+    <!-- ★ data-trip-id 用於獨立記憶體快取, data-currency-rate 用於匯率計算 ★ -->
+    <main class="content" data-trip-id="okinawa2025" data-currency-rate="0.20">
+        <a href="index.html" class="back-home">↩ Dashboard</a>
+        
+        <!-- 統一 Header -->
+        <div class="travel-header">
+            <div class="th-left">
+                <div class="th-flag">🇯🇵</div>
+                <div class="th-title">
+                    <h1>Okinawa</h1>
+                    <span>Japan</span>
+                </div>
+            </div>
+            <div class="th-right">
+                <div class="th-date">2025.12.25 - 12.28</div>
+                <div class="th-days">4 Days</div>
+            </div>
+        </div>
+
+        <!-- ================= Day 1 ================= -->
+        <div id="day1" class="page-section active">
+            
+            <div class="card">
+                <h1>Day 1: 12/25 (四)</h1>
+                <p>抵達沖繩 • 燒肉之夜</p>
+            </div>
+
+            <!-- 天氣小工具 -->
+            <div class="card" style="min-height: 120px;">
+                <div style="font-size: 0.9rem; color: #888; margin-bottom: 5px;">
+                    <i class="fas fa-cloud-sun"></i> 當地天氣預報
+                </div>
+                <div class="weather-container">
+                    <a class="weatherwidget-io" href="https://forecast7.com/zh-tw/26d21127d68/naha/" data-label_1="OKINAWA" data-label_2="沖繩那霸" data-font="Arial" data-icons="Climacons Animated" data-mode="Forecast" data-days="3" data-theme="pure" data-accent="#8D7B68" data-textColor="#463F3A" data-highColor="#D35400" data-lowColor="#7FB3D5" data-sunColor="#F39C12" data-cloudColor="#BDC3C7" style="display: block; width: 100%; height: 100%;">OKINAWA WEATHER</a>
+                </div>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');</script>
+            </div>
+
+            <!-- 去程航班資訊 -->
+            <div class="card">
+                <h2>🛫 去程航班資訊</h2>
+                <div class="flight-box">
+                    <div class="flight-route">TPE <span class="city-name">台北</span> <i class="fas fa-long-arrow-alt-right" style="color: #ccc; margin: 0 5px;"></i> OKA <span class="city-name">沖繩</span></div>
+                    <div class="flight-number-box"><span class="airline-name">AirAsia</span><span class="flight-code">FD 230</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">起飛</span><span class="info-value">13:30</span></div>
+                    <div class="info-group" style="text-align: center;">
+                        <span class="info-label">飛行時間</span><span class="info-value" style="font-size: 1rem;">1h 25m</span>
+                    </div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">抵達</span><span class="info-value">15:55</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">座位</span><span class="info-value">17A, 17B</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">航廈</span><span class="info-value">第一航廈</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">託運行李</span><span class="info-value">20 kg</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">手提行李</span><span class="info-value">7 kg</span></div>
+                </div>
+            </div>
+
+            <!-- 住宿資訊 -->
+            <div class="card">
+                <h2>🏨 住宿資訊</h2>
+                <div class="hotel-box">
+                    <div class="info-group">
+                        <span class="info-label">飯店名稱</span>
+                        <span class="info-value highlight">沖繩逸之彩飯店</span>
+                    </div>
+                </div>
+                <div class="hotel-box">
+                    <div class="info-group">
+                        <span class="info-label">3 Chome-18-33 Makishi, Naha, Okinawa</span>
+                        <a href="https://maps.app.goo.gl/Nd1gKp6sXQSQ6DdW7" target="_blank" class="info-value" style="font-size: 0.9rem; text-decoration: underline;">
+                            沖繩逸之彩飯店... (點我導航)
+                        </a>
+                    </div>
+                </div>
+                <div class="hotel-box">
+                    <div class="info-group"><span class="info-label">Check-in</span><span class="info-value">15:00 後</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">Check-out</span><span class="info-value">11:00 前</span></div>
+                </div>
+            </div>
+
+            <!-- Day 1 詳細行程 -->
+            <div class="card">
+                <h2>🗓️ 今日行程</h2>
+                
+                <div class="tip-box" style="margin-bottom: 20px; margin-top:0;">
+                    <span class="tip-title">💡 交通小撇步</span>
+                    那霸機場「國際線」與「國內線」航廈是相連的。領完行李後，請往國內線航廈走，上二樓就能看到單軌電車站 (那霸空港站)。
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">09:00</div>
+                    <div class="event-col">
+                        <span class="event-title">前往桃園機場</span>
+                        <div class="event-desc"><span class="transport-tag">機場捷運</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">10:00</div>
+                    <div class="event-col">
+                        <span class="event-title">辦理登機</span>
+                        <div class="event-desc">第一航廈</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">13:30<br>15:55</div>
+                    <div class="event-col">
+                        <span class="event-title">搭機</span>
+                        <div class="event-desc"><span class="transport-tag">FD 230</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">16:40</div>
+                    <div class="event-col">
+                        <span class="event-title">入境 / 領取行李</span>
+                        <div class="event-desc">國際線航廈</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">16:50</div>
+                    <div class="event-col">
+                        <span class="event-title">購買 OKICA 交通卡</span>
+                        <div class="event-desc">那霸機場單軌電車站 (付押金¥ 500+儲值¥ 2,500)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">17:00</div>
+                    <div class="event-col">
+                        <span class="event-title">搭乘單軌電車 → 牧志站</span>
+                        <div class="event-desc"><span class="transport-tag"><i class="fas fa-train"></i> 單軌</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">17:30</div>
+                    <div class="event-col">
+                        <span class="event-title">   
+                            飯店：<a href="https://maps.app.goo.gl/eSguwB17J5W9otbP6" target="_blank" class="event-link">沖繩逸之彩飯店 (Makishi)<i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">Check-in</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">18:45</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            晚餐：<a href="https://maps.app.goo.gl/FpzZUHoWQuSKd7rY7" target="_blank" class="event-link">琉球の牛 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">
+                            <span class="transport-tag">步行</span> 那霸國際通店 ⚠️ 務必準時抵達<br>
+                            Premium 菲力牛排+高級烤肉套餐 ¥11,780<br>
+                            Special 烤肉12種套餐(厚切肋扇2種) ¥6,980
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">21:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            購物：<a href="https://maps.app.goo.gl/rZm7CmiBBcgUfAkH6" target="_blank" class="event-link">唐吉訶德 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc"><span class="transport-tag">步行</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">22:30</div>
+                    <div class="event-col">
+                        <span class="event-title">回飯店休息</span>
+                        <div class="event-desc"><span class="transport-tag">步行</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Day 2 ================= -->
+        <div id="day2" class="page-section">
+            <div class="card">
+                <h1>Day 2: 12/26 (五)</h1>
+                <p>美麗海水族館一日遊</p>
+            </div>
+
+            <div class="card">
+                <h2>🗓️ 北部探險行程</h2>
+                
+                <div class="tip-box" style="margin-bottom: 20px; margin-top:0;">
+                    <span class="tip-title">💡 交通小撇步</span>
+                    今日啟用「單軌電車三日券 (1,800 JPY)」。記得在旭橋站巴士窗口買「117巴士來回特價票 (3,500 JPY)」。
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-col">08:30</div>
+                    <div class="event-col">
+                        <span class="event-title">飯店出發</span>
+                        <div class="event-desc">步行前往牧志站</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">09:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            <a href="https://maps.app.goo.gl/1Rt3Ma1ZoYtUb6WH9" target="_blank" class="event-link">購票 (那霸巴士總站) <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">旭橋站旁，購買 117 號高速巴士來回票</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">09:35</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            <a href="https://docs.google.com/spreadsheets/d/1IJ4K_qXxjTlnTciWrxAuSzv-941ucbrzDTTap6NVWeU/edit?gid=381644222#gid=381644222" target="_blank" class="event-link">搭乘 117 號高速巴士 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc"><span class="transport-tag">117 號高速巴士</span> 11號月台，紀念公園前下車</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">12:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            景點：<a href="https://maps.app.goo.gl/hs7N1GHxthnSkmvMA" target="_blank" class="event-link">美麗海水族館 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">
+                            🐬 13:00 海豚秀<br>
+                            🦈 15:00 鯨鯊餵食解說
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">17:00</div>
+                    <div class="event-col">
+                        <span class="event-title">搭 117 號高速巴士返回</span>
+                        <div class="event-desc"><span class="transport-tag">117 號高速巴士</span> 搭乘地點：紀念公園前巴士站</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">20:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            晚餐：<a href="https://maps.app.goo.gl/HM1gFM63McofHzLM8" target="_blank" class="event-link">Sanukiya <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">
+                            <span class="transport-tag">單軌</span> 旭橋 → 美榮橋 (¥ 300) + 步行<br>
+                            📝 豬肉烏龍麵、山藥烏龍麵
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">21:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            購物：<a href="https://maps.app.goo.gl/oVKXYx71UTrFnBfL6" target="_blank" class="event-link">MaxValu 牧志店 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc"><span class="transport-tag">步行</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">23:30</div>
+                    <div class="event-col">
+                        <span class="event-title">回飯店休息</span>
+                        <div class="event-desc"><span class="transport-tag">步行</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Day 3 ================= -->
+        <div id="day3" class="page-section">
+            <div class="card">
+                <h1>Day 3: 12/27 (六)</h1>
+                <p>市區購物日 • 美食巡禮</p>
+            </div>
+
+            <div class="card">
+                <h2>🗓️ 購物與美食</h2>
+                
+                <div class="timeline-item">
+                    <div class="time-col">11:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            參拜：<a href="https://maps.app.goo.gl/wP6nSfQb77VoycxA7" target="_blank" class="event-link">西來院 (達摩寺) <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc"><span class="transport-tag">單軌</span> 牧志 → 首里 (¥ 300)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">12:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            午餐：<a href="https://maps.app.goo.gl/ZmsdbrEqCpTZwcet6" target="_blank" class="event-link">漁師食堂 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">
+                            <span class="transport-tag">單軌/TAXI</span> 首里 → 古島 (¥ 230) + TAXI GO (¥ 1,300)<br>
+                            📝 套餐：鰻魚丼飯 + 甜蝦 + 天使紅蝦*3 + 炸蝦*2 (¥ 3,780)
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">14:30</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            購物：<a href="https://maps.app.goo.gl/YwXU44HuKz6iWBB76" target="_blank" class="event-link">KOJIMA × BicCamera <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc"><span class="transport-tag">TAXI GO</span> (¥ 800)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">15:30</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            購物：<a href="https://maps.app.goo.gl/NakfUJbKts2YcLwm8" target="_blank" class="event-link">歌町站商圈購物 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">
+                            <span class="transport-tag">TAXI GO</span> (¥ 1,100)<br>
+                            YAMADA LAND、DFS、3COINS
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">18:30</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            購物：<a href="https://maps.app.goo.gl/gqDhJchFSXYai2N96" target="_blank" class="event-link">山田電機 YAMADA Land <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc"><span class="transport-tag">步行</span></div>
+                    </div>
+               </div>
+                <div class="timeline-item">
+                    <div class="time-col">19:30</div>
+                    <div class="event-col">
+                        <span class="event-title">晚餐：Burger Revolution Naha</span>
+                        <div class="event-desc"><span class="transport-tag">步行</span> 📝 經典黑毛和牛漢堡、酪梨起司黑毛和牛漢堡、可樂 (¥ 4,920)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">20:00</div>
+                    <div class="event-col">
+                        <span class="event-title">回飯店放戰利品</span>
+                        <div class="event-desc"><span class="transport-tag">步行</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">20:30</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            購物：<a href="https://maps.app.goo.gl/cQNQQ3G44xQjbRiX6" target="_blank" class="event-link">夕凪 1號店 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">辣粉、辣油</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">21:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            購物：<a href="https://maps.app.goo.gl/rZm7CmiBBcgUfAkH6" target="_blank" class="event-link">唐吉訶德 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc"><span class="transport-tag">步行</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">23:30</div>
+                    <div class="event-col">
+                        <span class="event-title">回飯店休息</span>
+                        <div class="event-desc"><span class="transport-tag">步行</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Day 4 ================= -->
+        <div id="day4" class="page-section">
+            <div class="card">
+                <h1>Day 4: 12/28 (日)</h1>
+                <p>最後採買 • 平安歸國</p>
+            </div>
+
+            <!-- 回程航班資訊 -->
+            <div class="card">
+                <h2>🛫 回程航班資訊</h2>
+                <div class="flight-box">
+                    <div class="flight-route">OKA <span class="city-name">沖繩</span> <i class="fas fa-long-arrow-alt-right" style="color: #ccc; margin: 0 5px;"></i> TPE <span class="city-name">台北</span></div>
+                    <div class="flight-number-box"><span class="airline-name">AirAsia</span><span class="flight-code">FD 231</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">起飛</span><span class="info-value">16:55</span></div>
+                    <div class="info-group" style="text-align: center;">
+                        <span class="info-label">飛行時間</span><span class="info-value" style="font-size: 1rem;">1h 45m</span>
+                    </div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">抵達</span><span class="info-value">17:40</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">座位</span><span class="info-value">17A, 17B</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">航廈</span><span class="info-value">國際線</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">託運行李</span><span class="info-value">20 kg</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">手提行李</span><span class="info-value">7 kg</span></div>
+                </div>
+            </div>
+
+            <!-- Day 4 最後行程 -->
+            <div class="card">
+                <h2>🗓️ 最後行程</h2>
+                <div class="timeline-item">
+                    <div class="time-col">10:00</div>
+                    <div class="event-col">
+                        <span class="event-title">退房 / 寄放行李</span>
+                        <div class="event-desc">僅帶輕便背包</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">10:30</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            點心：<a href="https://maps.app.goo.gl/6hDsJERYt6gnCzLv9" target="_blank" class="event-link">南星莎布翁 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">📝 沖繩檸檬、原味 <span class="highlight">⚠️ 只接受現金</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">11:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            點心：<a href="https://maps.app.goo.gl/FVd38Am5r8QWGoFC7" target="_blank" class="event-link">Blue Seal 國際通店 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">📝 琉球紅茶蕨餅</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">11:15</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            購物：<a href="https://maps.app.goo.gl/FVd38Am5r8QWGoFC7" target="_blank" class="event-link">國際通 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">購買伴手禮</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">11:45</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            點心：<a href="https://maps.app.goo.gl/FcGHud96EixyV3dg7" target="_blank" class="event-link">Mochi-no-mise Yamaya <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">📝 紅豆麻糬</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">12:00</div>
+                    <div class="event-col">
+                        <span class="event-title">返回飯店領行李</span>
+                        <div class="event-desc">整理戰利品</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">12:30</div>
+                    <div class="event-col">
+                        <span class="event-title">前往那霸機場</span>
+                        <div class="event-desc"><span class="transport-tag">單軌</span></div>
+                    </div>
+                 </div>
+                <div class="timeline-item">
+                    <div class="time-col">13:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            點心：<a href="https://maps.app.goo.gl/V8CDaMe8bDZqS5pQ6" target="_blank" class="event-link">mille mele 世界第一蘋果派 <i class="fas fa-map-marker-alt"></i></a>
+                        </span>
+                        <div class="event-desc">📝 原味蘋果派</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ================= 水族館 Tips 頁面 ================= -->
+        <div id="aquarium-tips" class="page-section">
+            <div class="card">
+                <h1>🐋 美麗海水族館攻略</h1>
+                <p>交通時刻表 & 參觀路線懶人包</p>
+            </div>
+
+            <!-- 1. 交通區塊 -->
+            <div class="card">
+                <h2>🚌 交通：117 號高速巴士 (小抄版)</h2>
+                <div class="tip-box" style="margin-top: 0; margin-bottom: 15px;">
+                    <span class="tip-title">💡 小叮嚀</span>
+                    1. 認明車頭： 認準 [117] 標誌，111 號通常不到水族館。<br>
+                    2. 不需預約： 自由席先到先坐，客滿需等下一班。<br>
+                    3. 現金為主： 大多無法使用 Suica，請務必備妥現金。<br>
+                </div>
+                
+                <h3 style="font-size:1rem; color:#463F3A; margin-bottom:10px;">【去程：出發資訊】</h3>
+                <p style="font-size:0.9rem; line-height:1.6; color:#666;">
+                    <b>上車地點：</b> 那霸巴士總站 11 號月台 (旭橋站旁)<br>
+                    <b>車程時間：</b> 約 2 小時 15 分鐘<br>
+                    <b>建議班次：</b><br>
+                    • 08:36 出發 → 約 11:00 抵達<br>
+                    • 09:31 出發 → 約 11:50 抵達<br>
+                    • 10:25 出發 → 約 12:18 抵達<br>
+                    <span style="font-size:0.8rem; color:#888;">(請提早 15 分鐘現場排隊)</span><br>
+                    <b>下車地點：</b> 記念公園前（美ら海水族館）
+                </p>
+                
+                <hr style="border: 0; border-top: 1px dashed #ddd; margin: 15px 0;">
+
+                <h3 style="font-size:1rem; color:#463F3A; margin-bottom:10px;">【回程：推薦班次】</h3>
+                <p style="font-size:0.9rem; line-height:1.6; color:#666;">
+                    <b>上車地點：</b> 記念公園前 (去程下車處馬路對面)<br>
+                    <b>推薦班次 (往那霸)：</b><br>
+                    • 16:04 出發 → 約 18:40 抵達旭橋<br>
+                    • 17:09 出發 → 約 19:40 抵達旭橋<br>
+                    • 18:04 出發 → 約 20:30 抵達旭橋<br>
+                    <b>末班車：</b> 約 19:00 前後 <span style="color:#e74c3c;">(務必現場確認)</span><br>
+                    <b>下車地點：</b> 那霸巴士總站 或 縣廳北口
+                </p>
+
+                <div class="tip-box" style="margin-top: 15px;">
+                    <span class="tip-title">💡 小叮嚀</span>
+                    若搭 16:04 班次，建議 15:50 就到站牌等候。<br>
+                </div>
+
+                <hr style="border: 0; border-top: 1px dashed #ddd; margin: 15px 0;">
+
+                <h3 style="font-size:1rem; color:#463F3A; margin-bottom:10px;">【購票與車資】</h3>
+                <ul style="font-size:0.9rem; line-height:1.6; color:#666; padding-left:20px; margin-bottom:0;">
+                    <li><b>來回票 (推薦)：</b>在巴士總站 1 樓櫃檯買「117 號專用來回票」，約 ¥3,300 (僅限現金)。</li>
+                    <li><b>使用方式：</b>去程撕一聯給司機，回程給另一聯 (上車都要抽整理券)。</li>
+                    <li><b>單程票：</b>上車投現 ¥2,770。（上車抽券，下車看螢幕投錢）</li>
+                </ul>
+            </div>
+
+            <!-- 2. 參觀建議區塊 -->
+            <div class="card">
+                <h2>🐠 參觀建議 (16:00 離開)</h2>
+                <div class="timeline-item">
+                    <div class="time-col">10:30<br>11:30</div>
+                    <div class="event-col">
+                        <span class="event-title">海豚秀 (館外 - 海豚劇場)</span>
+                        <div class="event-desc">位於館外，離公車站較近，建議先看。</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">13:00</div>
+                    <div class="event-col">
+                        <span class="event-title">熱帶魚之海 (館內 3 樓)</span>
+                        <div class="event-desc">看熱帶魚或大水槽前拍照 (人潮多)。</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">15:00</div>
+                    <div class="event-col">
+                        <span class="event-title highlight" style="color:#e74c3c;">必看：黑潮之海 - 鯨鯊餵食秀</span>
+                        <div class="event-desc">黑潮之海大水槽前。鯨鯊垂直進食震撼畫面！</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">15:20</div>
+                    <div class="event-col">
+                        <span class="event-title">逛紀念品店</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">15:50</div>
+                    <div class="event-col">
+                        <span class="event-title">前往公車站</span>
+                        <div class="event-desc">準備搭乘 16:04 回程巴士。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 黑潮之海介紹 -->
+            <div class="card">
+                <h2>🦈 關於「黑潮之海」</h2>
+                <p style="font-size:0.9rem; line-height:1.6; color:#666;">
+                    <b>位置：</b>水族館 2 樓 (入口在 4 樓，搭手扶梯往下逛)。<br>
+                    <b>最佳觀賞點：</b>
+                </p>
+                <ul style="font-size:0.9rem; line-height:1.6; color:#666; padding-left:20px; margin-bottom:0;">
+                    <li><b>大水槽正前方：</b>近距離感受震撼感。</li>
+                    <li><b>海洋觀賞室：</b>位於水槽旁，可仰望鯨鯊。</li>
+                    <li><b>Ocean Blue 咖啡廳：</b>水槽左側，可坐窗邊觀賞 (需排隊)。</li>
+                </ul>
+                <div class="tip-box" style="margin-top: 15px;">
+                    <span class="tip-title">⏰ 餵食秀時間</span>
+                    15:00 (最推薦)、17:00。<br>建議提早 10-15 分鐘佔位。
+                </div>
+            </div>
+
+            <!-- 4. 表演時刻表 -->
+            <div class="card">
+                <h2>🐬 館外區域：海豚與海洋哺乳類 (免費)</h2>
+                <ul style="font-size:0.9rem; line-height:1.6; color:#666; padding-left:20px; margin-bottom:0;">
+                    <li><b>海豚秀：</b>10:30 / 11:30 / 13:00 / 15:00 / 17:00 (海豚劇場)</li>
+                    <li><b>海豚餵食：</b>10:00 / 11:00 / 13:30 / 15:30 (海豚潟湖, ¥500)</li>
+                    <li><b>潛水員秀：</b>11:50 / 13:50 / 15:30 (海豚劇場)</li>
+                    <li><b>海龜/海牛餵食：</b>約 11:00 / 14:00 (依生物狀態調整)</li>
+                </ul>
+            </div>
+             <div class="card">
+                <h2>🦈 館內區域：黑潮之海餵食秀 (需門票)</h2>
+                <ul style="font-size:0.9rem; line-height:1.6; color:#666; padding-left:20px; margin-bottom:0;">
+                    <li><b>鬼蝠魟餵食秀：</b>09:30 (水上觀覽區)</li>
+                    <li><b>鯨鯊餵食秀：</b>15:00 / 17:00 (水族館 2 樓)</li>
+                    <li><b>熱帶魚餵食：</b>13:00 / 15:30 (3 樓「熱帶魚之海」)</li>
+                    <li><b>黑潮探險：</b>08:30~11:00 / 17:30~閉館 (從水槽正上方俯瞰)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= 購物清單頁面 ================= -->
+        <div id="shopping" class="page-section">
+            <div class="card">
+                <h1>🛍️ 必買清單</h1>
+                <p>點擊下方按鈕快速跳轉</p>
+                <div class="shop-nav">
+                    <a href="#cat-food" class="shop-nav-btn"><i class="fas fa-cookie-bite"></i> 伴手禮</a>
+                    <a href="#cat-life" class="shop-nav-btn"><i class="fas fa-home"></i> 生活雜貨</a>
+                    <a href="#cat-drug" class="shop-nav-btn"><i class="fas fa-pills"></i> 藥妝</a>
+                    <a href="#cat-other" class="shop-nav-btn"><i class="fas fa-star"></i> 其他</a>
+                </div>
+            </div>
+
+            <!-- === 分類 1: 伴手禮 === -->
+            <div id="cat-food" class="shop-category-title"><i class="fas fa-cookie-bite"></i> 伴手禮 (辣粉/紀念幣)</div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item4.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">辣粉</div>
+                    <div class="shop-price">¥ 800</div>
+                    <div class="shop-loc">夕凪</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item6.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">玉泉洞辣粉</div>
+                    <div class="shop-price">¥ 1,188</div>
+                    <div class="shop-loc">夕凪</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item5.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">石垣島辣油</div>
+                    <div class="shop-price">¥ 1,100</div>
+                    <div class="shop-loc">唐吉軻德</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item3.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">美麗海水族館紀念幣</div>
+                    <div class="shop-price">¥ 800</div>
+                    <div class="shop-loc">水族館商店</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <!-- === 分類 2: 生活雜貨 === -->
+            <div id="cat-life" class="shop-category-title"><i class="fas fa-home"></i> 生活雜貨 (3COINS/安木屋)</div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item19.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">LIHIT LAB myfa娃包</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">
+                        <a href="https://maps.app.goo.gl/LzpQ1yFjMSWADDau8" target="_blank" class="event-link" style="font-size:0.8rem;">安木屋 / M號(A3305)</a>
+                    </div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item7.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">日幣零錢包</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">3coins</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+            
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item8.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">二合一眼鏡盒</div>
+                    <div class="shop-price">¥ 1,320</div>
+                    <div class="shop-loc">3coins</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item18.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">一盒六用 微波爐料理盒</div>
+                    <div class="shop-price">¥ 3,599</div>
+                    <div class="shop-loc">3coins</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item20.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">Shupatto購物袋</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">
+                        <a href="https://maps.app.goo.gl/kGygj5QkykK2xA336" target="_blank" class="event-link" style="font-size:0.8rem;">唐吉軻德</a>
+                    </div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item22.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">樂敦製藥 Gyutto 緊緻修復髮膜</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">San-A 那霸 Main Place</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <!-- === 分類 3: 藥妝 === -->
+            <div id="cat-drug" class="shop-category-title"><i class="fas fa-pills"></i> 藥妝 (DHC/眼藥水)</div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item1.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">NISSEI MT-36LBJ</div>
+                    <div class="shop-price">NT$1,780</div>
+                    <div class="shop-loc">
+                        <a href="https://maps.app.goo.gl/3oWxHpovEDT8h6G89" target="_blank" class="event-link" style="font-size:0.8rem;">BigCamera / 藥局</a>
+                    </div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item9.jpeg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">DHC 維他命C 60日</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">藥局 / 12包</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+            
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item10.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">EVE QUICK 藍色 40錠</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">藥局 / 12盒</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item12.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">武田維他命C (300錠)</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">藥局 / 1瓶</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item13.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">小林製藥喉嚨噴劑</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">藥局 / 1支</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+             <div class="shop-item">
+                <img src="Okinawa2025_img/item14.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">小林製藥喉嚨痛藥粉</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">藥局 / 1盒</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+             <div class="shop-item">
+                <img src="Okinawa2025_img/item15.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">UHA 鐵 & 葉酸軟糖</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">藥局 / 2瓶</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+             <div class="shop-item">
+                <img src="Okinawa2025_img/item16.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">V Rohto Contact Premium</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">藥局 / 2瓶</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+             <div class="shop-item">
+                <img src="Okinawa2025_img/item17.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">Sante Medical 12 (紅)</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">藥局 / 2瓶</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+             <div class="shop-item">
+                <img src="Okinawa2025_img/item23.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">樂敦製藥 THE LYPO 維他命C</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">藥局</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <!-- === 分類 4: 其他 === -->
+            <div id="cat-other" class="shop-category-title"><i class="fas fa-star"></i> 其他</div>
+
+            <div class="shop-item">
+                <img src="Okinawa2025_img/item2.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">Tomica Pokémon</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">國際通</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+            
+            <div class="shop-item">
+                <img src="https://via.placeholder.com/150" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">Gentle Monster 墨鏡</div>
+                    <div class="shop-price">¥ 1,000</div>
+                    <div class="shop-loc">現代百貨</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+             <div class="shop-item">
+                <img src="Okinawa2025_img/item21.jpg" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">商品</div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">地點 / 備註</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <!-- 購物備忘錄 -->
+            <div class="card" style="margin-top: 30px;">
+                <h2>📝 購物備忘錄</h2>
+                <textarea id="shopMemo" placeholder="輸入代購清單..." oninput="saveMemo(this.value)" style="width: 100%; height: 200px; padding: 15px; border-radius: 8px; border: 1px solid #ddd; resize: none; background: #fafafa; font-family: inherit;"></textarea>
+            </div>
+        </div>
+
+        <!-- ================= 匯率 & SOS ================= -->
+        <div id="money" class="page-section">
+            <div class="card">
+                <h1>💰 簡易匯率換算</h1>
+                <p>輸入日幣，換算台幣 (以 0.20 計算)</p>
+                <div class="result-box" id="twdResult" style="background: #333; color: #0f0; padding: 15px; font-family: monospace; font-size: 1.5rem; text-align: right; border-radius: 5px; margin-bottom: 10px;">NT$ 0</div>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" inputmode="decimal" id="calcInput" class="calc-input" placeholder="輸入金額" oninput="convertCurrency(this.value)" style="flex: 1; padding: 10px; font-size: 1.2rem; border-radius: 5px; border: 1px solid #ccc;">
+                    <button onclick="clearCurrency()" style="background-color: #95a5a6; color: white; border: none; border-radius: 5px; padding: 0 20px; font-weight: bold; font-size: 1rem; cursor: pointer;">清除</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="sos" class="page-section">
+            <div class="card">
+                <h1>🆘 緊急求助</h1>
+                <p>遇到緊急狀況請保持冷靜。</p>
+                <a href="tel:110" class="sos-btn bg-police"><i class="fas fa-phone-alt"></i> 110 警察局</a>
+                <a href="tel:119" class="sos-btn bg-fire"><i class="fas fa-ambulance"></i> 119 救護車/消防</a>
+                
+                <p style="margin-top: 20px; font-weight: bold; border-top: 1px solid #eee; padding-top: 15px; color:#463F3A;">🏥 醫療 / 旅遊協助</p>
+                <a href="tel:05038162787" class="sos-btn bg-jnto">
+                    <i class="fas fa-headset"></i> JNTO 觀光醫療熱線
+                    <div style="font-size: 0.75rem; font-weight: normal; margin-top: 3px; display: block; width: 100%;">24小時中文對應 • 受傷生病諮詢</div>
+                </a>
+                <a href="tel:+819087653410" class="sos-btn bg-amda">
+                    <i class="fas fa-passport"></i> 台灣駐沖繩辦事處
+                    <div style="font-size: 0.75rem; font-weight: normal; margin-top: 3px; display: block; width: 100%;">急難救助專線</div>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 統一 Lightbox DOM -->
+    <div id="myLightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="close-lightbox">&times;</div>
+        <img class="lightbox-img" id="lightboxImg" src="" onclick="toggleZoom(event)">
+    </div>
+
+    <!-- ★★★ 引入統一共用 JS (無任何內聯程式碼) ★★★ -->
+    <script src="js/travel.js"></script>
+
+</body>
+</html>

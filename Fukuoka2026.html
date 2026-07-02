@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- [TEMPLATE] 請修改標題與 Favicon -->
+    <title>福岡 4 天 3 夜快樂行</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 font-size=%2280%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>🎂</text></svg>">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/travel.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ================= Sidebar ================= -->
+    <nav class="sidebar">
+        <!-- Itinerary -->
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">
+                <span>Itinerary</span>
+                <i class="fas fa-chevron-down sidebar-group-toggle"></i>
+            </div>
+            <div class="sidebar-group-content">
+                <div class="menu-item active" onclick="showPage('day1')">
+                    <span class="dot-icon"></span>
+                    <span class="menu-text">Day 1</span>
+                </div>
+                <div class="menu-item" onclick="showPage('day2')">
+                    <span class="dot-icon"></span>
+                    <span class="menu-text">Day 2</span>
+                    <span class="menu-badge">Birthday</span>
+                </div>
+                <div class="menu-item" onclick="showPage('day3')">
+                    <span class="dot-icon"></span>
+                    <span class="menu-text">Day 3</span>
+                </div>
+                <div class="menu-item" onclick="showPage('day4')">
+                    <span class="dot-icon"></span>
+                    <span class="menu-text">Day 4</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <!-- Planning -->
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">
+                <span>Planning</span>
+                <i class="fas fa-chevron-down sidebar-group-toggle"></i>
+            </div>
+            <div class="sidebar-group-content">
+                <div class="menu-item" onclick="showPage('shopping')">
+                    <i class="fas fa-shopping-bag menu-icon"></i>
+                    <span class="menu-text">Shopping</span>
+                </div>
+                <div class="menu-item" onclick="showPage('backup-food')">
+                    <i class="fas fa-utensils menu-icon"></i>
+                    <span class="menu-text">Backup</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <!-- Utilities -->
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">
+                <span>Utilities</span>
+                <i class="fas fa-chevron-down sidebar-group-toggle"></i>
+            </div>
+            <div class="sidebar-group-content">
+                <div class="menu-item" onclick="showPage('money')">
+                    <i class="fas fa-exchange-alt menu-icon"></i>
+                    <span class="menu-text">Currency</span>
+                </div>
+                <div class="menu-item sos-item" onclick="showPage('sos')">
+                    <i class="fas fa-exclamation-triangle menu-icon"></i>
+                    <span class="menu-text">SOS</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================= Content ================= -->
+    <!-- [TEMPLATE] 修改 data-trip-id 與 data-currency-rate -->
+    <main class="content" data-trip-id="fukuoka2026" data-currency-rate="0.21">
+        <a href="index.html" class="back-home">↩ Dashboard</a>
+        
+        <!-- [TEMPLATE] Travel Header -->
+        <div class="travel-header">
+            <div class="th-left">
+                <div class="th-flag">🇯🇵</div>
+                <div class="th-title">
+                    <h1>Fukuoka</h1>
+                    <span>Japan</span>
+                </div>
+            </div>
+            <div class="th-right">
+                <div class="th-date">2026.06.18 - 06.21</div>
+                <div class="th-days">4 Days</div>
+            </div>
+        </div>
+
+        <!-- ================= Day 1 ================= -->
+        <div id="day1" class="page-section active">
+            
+            <!-- [TEMPLATE] Day Header -->
+            <div class="card day-header">
+                <div class="day-header-top">
+                    <h1>Day 1 <span class="day-date-badge">06/18 (Thu)</span></h1>
+                    <div class="day-header-right">
+                        <span class="day-weather">🌤️ 25° / 30° ｜ ☔ 20%</span>
+                        <span class="day-progress">Day 1 / 4</span>
+                    </div>
+                </div>
+                <p>出發福岡 • 快樂旅程開始</p>
+            </div>
+
+            <!-- [TEMPLATE] Flight Card -->
+            <div class="card">
+                <h2>🛫 去程航班資訊</h2>
+                <div class="flight-box">
+                    <div class="flight-route">TPE <span class="city-name">台北</span> <i class="fas fa-long-arrow-alt-right"></i> FUK <span class="city-name">福岡</span></div>
+                    <div class="flight-number-box">
+                        <span class="airline-name">AirAsia</span>
+                        <span class="flight-code">AK 1510</span>
+                    </div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group flight-info-left">
+                        <span class="info-label">起飛</span><span class="info-value">12:00</span>
+                    </div>
+                    <div class="info-group flight-info-center">
+                        <span class="info-label">飛行時間</span><span class="info-value flight-time-val">2h 20m</span>
+                    </div>
+                    <div class="info-group flight-info-right">
+                        <span class="info-label">抵達</span><span class="info-value">15:20</span>
+                    </div>
+                </div>
+                <div class="flight-box no-border">
+                    <div class="info-group flight-info-left">
+                        <span class="info-label">託運行李</span><span class="info-value">20 kg</span>
+                    </div>
+                    <div class="info-group flight-info-right">
+                        <span class="info-label">手提行李</span><span class="info-value">7 kg</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- [TEMPLATE] Hotel Card -->
+            <div class="card">
+                <h2>🏨 住宿資訊</h2>
+                <div class="hotel-box hotel-address-box">
+                    <div class="info-group">
+                        <span class="info-label">飯店名稱</span>
+                        <span class="info-value hotel-name-large">天神西通 Richmond 飯店</span>
+                        <span class="hotel-address">2 Chome-6-16 Tenjin, Chuo Ward, Fukuoka</span>
+                    </div>
+                    <a href="https://maps.app.goo.gl/yWNAKHAR5guLHspw8" target="_blank" class="map-btn">
+                        <i class="fas fa-map-marker-alt"></i> Google Maps
+                    </a>
+                </div>
+                <div class="hotel-box no-border">
+                    <div class="info-group flight-info-left"><span class="info-label">Check-in</span><span class="info-value">14:00 後</span></div>
+                    <div class="info-group flight-info-right"><span class="info-label">Check-out</span><span class="info-value">11:00 前</span></div>
+                </div>
+            </div>
+
+            <!-- [TEMPLATE] Timeline Block -->
+            <div class="card timeline-card">
+                <h2>🗓️ 今日行程</h2>
+                
+                <!-- [TEMPLATE] Tip Box -->
+                <div class="tip-box tip-box-top">
+                    <div class="tip-title"><i class="fas fa-lightbulb"></i> 交通小撇步</div>
+                    福岡機場➡️地下鐵<br>
+                    1. 出關後右轉: 找尋標示「国際線連絡バス」的指引。<br>
+                    2. 搭乘免費接駁車: A2出口，4 號或 5 號月台。<br>
+                    3. 抵達國內線: 依照指示搭乘電扶梯到 B1，即可到達地下鐵「福岡機場站」。<br>
+                    搭乘往「筑前前原」或「唐津」方向的列車，坐 5 站（約 11 分鐘）
+                    <img src="Fukuoka/Fukuoka_img/fukuoka_airport.png" class="menu-thumb" onclick="openImage(this)">
+                </div>
+
+                <!-- [TEMPLATE] Timeline Item -->
+                <div class="timeline-item">
+                    <div class="time-col">09:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🚇</span><span>前往桃園機場</span></span>
+                        <div class="event-desc"><span class="transport-tag">機場捷運</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">10:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">✈️</span><span>辦理登機</span></span>
+                        <div class="event-desc">第一航廈</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">12:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">✈️</span><span>搭機 (AK 1510)</span></span>
+                        <div class="event-desc">航程約 2h 20m</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">15:20</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🛬</span><span>入境 / 領取行李</span></span>
+                        <div class="event-desc">福岡機場</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">16:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            <span class="event-title-icon">☕</span><span><a href="https://maps.app.goo.gl/QBQfi4VQVnFVXuJR9" target="_blank" class="event-link">THE MATCHA TOKYO</a></span>
+                        </span>
+                        <div class="event-desc">📝 Ice Matcha Latte、Ice Hojicha Latte (出境後)<br>
+                            <img src="Fukuoka/Fukuoka_img/menu_TheMarchaTokyo.jpg" class="menu-thumb" onclick="openImage(this)">
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">16:30</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🚇</span><span>搭乘空港線：福岡機場站 → 天神站</span></span>
+                        <div class="event-desc"><span class="transport-tag">地下鐵</span>西7出口</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">17:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            <span class="event-title-icon">🏨</span><span><a href="https://maps.app.goo.gl/J8Wep4gxbxU1iDLK8" target="_blank" class="event-link">天神西通Richmond飯店</a></span>
+                        </span>
+                        <div class="event-desc">Check-in 飯店大廳在2F</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">18:30</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            <span class="event-title-icon">🍜</span><span><a href="https://maps.app.goo.gl/RpmoGKuhhKYrCiM19" target="_blank" class="event-link">大名黑豚吉列豬扒</a></span>
+                        </span>
+                        <div class="event-desc">
+                            「黑豚 特ロースかつ御膳 (200g)」➔ 2,300円<br>
+                            「黑豚 シャトーブリアン ヒレかつ御膳 (140g)」➔ 3,000円
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item no-border">
+                    <div class="time-col">21:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            <span class="event-title-icon">🍢</span><span><a href="https://maps.app.goo.gl/wjy6TxXJxHn8kcqB9" target="_blank" class="event-link">かわ屋 祇園店</a></span>
+                        </span>
+                        <div class="event-desc">烤雞皮*10</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Day 2 ================= -->
+        <div id="day2" class="page-section">
+            
+            <div class="card day-header">
+                <div class="day-header-top">
+                    <h1>Day 2 <span class="day-date-badge">06/19 (Fri)</span></h1>
+                    <div class="day-header-right">
+                        <span class="day-weather">☁️ 24° / 28° ｜ ☔ 40%</span>
+                        <span class="day-progress">Day 2 / 4</span>
+                    </div>
+                </div>
+                <p>🧸 生日快樂！🥳</p>
+            </div>
+
+            <div class="card timeline-card">
+                <h2>🗓️ 行程內容</h2>
+                <div class="tip-box">
+                    <div class="tip-title"><i class="fas fa-lightbulb"></i> 交通小撇步</div>
+                    方案A：「West Coast Liner」 高速巴士<br>
+                    1. 上下車：天神 3 丁目，直達「二見ヶ浦・月と太陽糸島茶房前」。<br>
+                    2. 去程末班車14:42 / 回程末班車17:31。<br>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-col">11:30</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            <span class="event-title-icon">🍔</span><span><a href="https://maps.app.goo.gl/nDduZHqsyDF9dV2C6" target="_blank" class="event-link">Hungry Heaven</a></span>
+                        </span>
+                        <div class="event-desc"><span class="transport-tag">步行</span>7分鐘</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">12:20</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            <span class="event-title-icon">☕</span><span><a href="https://maps.app.goo.gl/XUVzRdrjJc6zxZrZA" target="_blank" class="event-link">藍瓶咖啡</a></span>
+                        </span>
+                        <div class="event-desc"><span class="transport-tag">步行</span>3分鐘</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item no-border">
+                    <div class="time-col">12:30</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">📍</span><span>抵達分岔點</span></span>
+                        <div class="event-desc">視天氣與體力，決定接下來的行程：</div>
+                    </div>
+                </div>
+
+                <!-- [TEMPLATE] Branch Plan Template -->
+                <div class="branch-container">
+                    
+                    <!-- Branch: Best plan -->
+                    <details open class="branch-details best-plan">
+                        <summary>
+                            <span><i class="fa-solid fa-crown branch-icon-crown"></i> Best Plan</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </summary>
+                        <div class="branch-content">
+                            <div class="branch-timeline-item">
+                                <div class="time-col">12:30</div>
+                                <div class="event-col">
+                                    <span class="event-title"><span class="event-title-icon">🚇</span><span>搭乘七隈線：天神南 → 六本松</span></span>
+                                </div>
+                            </div>
+                            <div class="branch-timeline-item">
+                                <div class="time-col">14:00</div>
+                                <div class="event-col">
+                                    <span class="event-title"><span class="event-title-icon">🍵</span><span><a href="https://maps.app.goo.gl/EAVm6RMjeqXxttsL9" target="_blank" class="event-link">&LOCALS 大濠公園</a></span></span>
+                                    <div class="event-desc">📝 茶包</div>
+                                </div>
+                            </div>
+                            <div class="branch-timeline-item">
+                                <div class="time-col">15:50</div>
+                                <div class="event-col">
+                                    <span class="event-title"><span class="event-title-icon">🍰</span><span><a href="https://maps.app.goo.gl/dfFcZ7tDrahxxCHQ8" target="_blank" class="event-link">Jacques 大濠店</a></span></span>
+                                    <div class="event-desc">🎂 買小蛋糕去鳥居！</div>
+                                </div>
+                            </div>
+                            <div class="branch-timeline-item">
+                                <div class="time-col">16:30</div>
+                                <div class="event-col">
+                                    <span class="event-title"><span class="event-title-icon">⛩️</span><span><a href="https://maps.app.goo.gl/DVjcGMxMxpbUPXVz5" target="_blank" class="event-link">壱岐神社 一の鳥居</a></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Branch: Plan A -->
+                    <details class="branch-details plan-a">
+                        <summary>
+                            <span><i class="fas fa-sun branch-icon-sun"></i> 方案 A：去糸島白色鳥居</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </summary>
+                        <div class="branch-content">
+                            <div class="branch-timeline-item">
+                                <div class="time-col">12:30</div>
+                                <div class="event-col">
+                                    <span class="event-title"><span class="event-title-icon">🚌</span><span>去程上車點：Tenjin Minami</span></span>
+                                    <div class="event-desc"><span class="transport-tag">巴士</span>302、55</div>
+                                </div>
+                            </div>
+                            <div class="branch-timeline-item">
+                                <div class="time-col">12:42</div>
+                                <div class="event-col">
+                                    <span class="event-title"><span class="event-title-icon">🚌</span><span>轉乘：天神三丁目</span></span>
+                                    <div class="event-desc"><span class="transport-tag">高速巴士</span>West Coast Liner</div>
+                                    <a href="#" target="_blank" class="pdf-btn"><i class="fas fa-file-pdf"></i> 時刻表</a>
+                                </div>
+                            </div>
+                            <div class="branch-timeline-item">
+                                <div class="time-col">14:00</div>
+                                <div class="event-col">
+                                    <span class="event-title"><span class="event-title-icon">⛩️</span><span>景點：海中大鳥居</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Branch: Plan B -->
+                    <details class="branch-details plan-b">
+                        <summary>
+                            <span><i class="fas fa-umbrella branch-icon-umbrella"></i> 方案 B：下雨去福岡塔</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </summary>
+                        <div class="branch-content">
+                            <div class="branch-timeline-item">
+                                <div class="time-col">13:00</div>
+                                <div class="event-col">
+                                    <span class="event-title"><span class="event-title-icon">📍</span><span>景點：Fukuoka Tower</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="timeline-item timeline-item-divider no-border">
+                    <div class="time-col">19:00</div>
+                    <div class="event-col">
+                        <span class="event-title">
+                            <span class="event-title-icon">🍲</span><span><a href="https://maps.app.goo.gl/o5UUQjnt7n1wPGJd6" target="_blank" class="event-link">博多水炊鍋専門 橙</a></span>
+                        </span>
+                        <div class="event-desc">水炊鍋¥4,150 + 雜炊¥350 + 唐揚炸雞¥160/塊</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Day 3 ================= -->
+        <div id="day3" class="page-section">
+            
+            <div class="card day-header">
+                <div class="day-header-top">
+                    <h1>Day 3 <span class="day-date-badge">06/20 (Sat)</span></h1>
+                    <div class="day-header-right">
+                        <!-- ★ 預留天氣資訊 (若無資料CSS會自動隱藏 empty span) -->
+                        <span class="day-weather">☀️ 26° / 31° ｜ ☔ 10%</span>
+                        <span class="day-progress">Day 3 / 4</span>
+                    </div>
+                </div>
+                <p>福岡探索 🛍️</p>
+            </div>
+
+            <div class="card timeline-card">
+                <h2>🗓️ 行程內容</h2>
+                
+                <div class="tip-box">
+                    <div class="tip-title"><i class="fas fa-lightbulb"></i> 交通小撇步</div>
+                    購買地鐵一日券：¥640。
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-col">09:30</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🥐</span><span><a href="https://maps.app.goo.gl/Unzyosv9K9RQp4ET6" target="_blank" class="event-link">Dacomecca</a></span></span>
+                        <div class="event-desc"><span class="transport-tag">地下鐵</span> 📝 香腸麵包</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">10:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🍨</span><span><a href="https://maps.app.goo.gl/85ebq5YPcBX2wu3u6" target="_blank" class="event-link">Imonne Hakata</a></span></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">10:15</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🍰</span><span><a href="https://maps.app.goo.gl/pAsHpt3za6hdBagL7" target="_blank" class="event-link">年輪蛋糕 治一郎</a></span></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">11:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🍜</span><span><a href="https://maps.app.goo.gl/SNW7WJbU63wGYfsPA" target="_blank" class="event-link">志成 烏龍麵</a></span></span>
+                        <div class="event-desc">
+                            <img src="Fukuoka/Fukuoka_img/menu_SanukiUdonShinari.png" class="menu-thumb" onclick="openImage(this)">
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">13:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">📍</span><span><a href="https://maps.app.goo.gl/5EkqpcburWWV4bk39" target="_blank" class="event-link">麵包超人博物館</a></span></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">14:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🛍️</span><span><a href="https://maps.app.goo.gl/qtxEFyfdiAucoGqJ7" target="_blank" class="event-link">Mina 天神</a></span></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">15:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">☕</span><span><a href="https://maps.app.goo.gl/wBtTvm3UTVTwwsas5" target="_blank" class="event-link">Full Full Bld.</a></span></span>
+                    </div>
+                </div>
+                <div class="timeline-item no-border">
+                    <div class="time-col">17:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🍲</span><span><a href="https://maps.app.goo.gl/SHx3GaGoWvEmxQkQA" target="_blank" class="event-link">博多もつ鍋前田屋</a></span></span>
+                        <div class="event-desc">📝 牛腸鍋</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Day 4 ================= -->
+        <div id="day4" class="page-section">
+            
+            <div class="card day-header">
+                <div class="day-header-top">
+                    <h1>Day 4 <span class="day-date-badge">06/21 (Sun)</span></h1>
+                    <div class="day-header-right">
+                        <span class="day-weather">🌧️ 23° / 26° ｜ ☔ 80%</span>
+                        <span class="day-progress">Day 4 / 4</span>
+                    </div>
+                </div>
+                <p>最後採買 • 平安歸國</p>
+            </div>
+
+            <!-- [TEMPLATE] Return Flight -->
+            <div class="card">
+                <h2>🛫 回程航班資訊</h2>
+                <div class="flight-box">
+                    <div class="flight-route">FUK <span class="city-name">福岡</span> <i class="fas fa-long-arrow-alt-right"></i> TPE <span class="city-name">台北</span></div>
+                    <div class="flight-number-box">
+                        <span class="airline-name">AirAsia</span>
+                        <span class="flight-code">AK 1511</span>
+                    </div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group flight-info-left"><span class="info-label">起飛</span><span class="info-value">16:20</span></div>
+                    <div class="info-group flight-info-center"><span class="info-label">飛行時間</span><span class="info-value flight-time-val">2h 30m</span></div>
+                    <div class="info-group flight-info-right"><span class="info-label">抵達</span><span class="info-value">17:50</span></div>
+                </div>
+                <div class="flight-box no-border">
+                    <div class="info-group flight-info-left"><span class="info-label">託運行李</span><span class="info-value">20 kg</span></div>
+                    <div class="info-group flight-info-right"><span class="info-label">手提行李</span><span class="info-value">7 kg</span></div>
+                </div>
+            </div>
+
+            <div class="card timeline-card">
+                <h2>🗓️ 最後行程</h2>
+                <div class="timeline-item">
+                    <div class="time-col">10:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🏨</span><span>退房 / 寄放行李</span></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">11:30</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">🍜</span><span><a href="https://maps.app.goo.gl/1CjV8jnrwrWPveFr5" target="_blank" class="event-link">一蘭 天神西通店</a></span></span>
+                    </div>
+                </div>
+                <div class="timeline-item no-border">
+                    <div class="time-col">13:30</div>
+                    <div class="event-col">
+                        <span class="event-title"><span class="event-title-icon">✈️</span><span>前往福岡機場</span></span>
+                        <div class="event-desc"><span class="transport-tag">地下鐵</span>天神站 → 福岡機場站</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Shopping ================= -->
+        <div id="shopping" class="page-section">
+            <div class="card day-header">
+                <h1>🛍️ 必買清單</h1>
+                <div class="shop-nav mt-10">
+                    <a href="#cat-food" class="shop-nav-btn"><i class="fas fa-cookie-bite"></i> 伴手禮</a>
+                    <a href="#cat-life" class="shop-nav-btn"><i class="fas fa-home"></i> 生活雜貨</a>
+                    <a href="#cat-drug" class="shop-nav-btn"><i class="fas fa-pills"></i> 藥妝</a>
+                </div>
+            </div>
+
+            <div id="cat-life" class="shop-category-title"><i class="fas fa-home"></i> 生活雜貨</div>
+            
+            <!-- [TEMPLATE] Shopping Item -->
+            <div class="shop-item">
+                <img src="Fukuoka/Fukuoka_shopping/item10.jpg" alt="商品" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">
+                        <span class="shop-name-text">sun-star AKELKEY 2WAY萬用開箱器</span>
+                        <span class="shop-bought-badge"><i class="fas fa-check"></i> 已購買</span>
+                    </div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">LOFT, HANDS</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+
+            <div id="cat-drug" class="shop-category-title"><i class="fas fa-pills"></i> 藥妝</div>
+            <div class="shop-item">
+                <img src="Fukuoka/Fukuoka_shopping/item1.webp" alt="商品" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name">
+                        <span class="shop-name-text">Pabron Gold A</span>
+                        <span class="shop-bought-badge"><i class="fas fa-check"></i> 已購買</span>
+                    </div>
+                    <div class="shop-price">¥ ???</div>
+                    <div class="shop-loc">唐吉訶德</div>
+                </div>
+                <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
+            </div>
+            
+            <div class="card timeline-card">
+                <h2>📝 購物備忘錄</h2>
+                <textarea id="shopMemo" class="shop-memo-input" placeholder="輸入代購清單..." oninput="saveMemo(this.value)"></textarea>
+            </div>
+        </div>
+
+        <!-- ================= Backup ================= -->
+        <div id="backup-food" class="page-section">
+            <div class="card day-header">
+                <h1>🍽️ 備用餐廳名單</h1>
+                <p>行程異動、公休或客滿時的口袋名單</p>
+            </div>
+            <div class="shop-category-title"><i class="fas fa-utensils"></i> 主食</div>
+            <div class="shop-item">
+                <div class="shop-info">
+                    <div class="shop-name"><a href="https://maps.app.goo.gl/XNNTqkQndh6Bf82h7" target="_blank" class="event-link">Shin-Shin 博多拉麵</a></div>
+                    <div class="shop-loc"><span class="transport-tag">天神站</span> 福岡超人氣名店</div>
+                </div>
+            </div>
+            <div class="shop-item">
+                <div class="shop-info">
+                    <div class="shop-name"><a href="https://maps.app.goo.gl/5SyzfjTfoncWTeo8A" target="_blank" class="event-link">天麩羅処ひらお</a></div>
+                    <div class="shop-loc"><span class="transport-tag">赤坂站</span> 天婦羅</div>
+                </div>
+            </div>
+            
+            <div class="shop-category-title"><i class="fas fa-fire"></i> 點心</div>
+            <div class="shop-item">
+                <img src="Fukuoka/Fukuoka_img/pancake.jpg" alt="餐廳圖片" class="shop-img" onclick="openImage(this)">
+                <div class="shop-info">
+                    <div class="shop-name"><a href="https://maps.app.goo.gl/2MHFQc8RxKao2L8A7" target="_blank" class="event-link">幸福pancake</a></div>
+                    <div class="shop-loc"><span class="transport-tag">天神站</span> 幸福鬆餅</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Currency ================= -->
+        <div id="money" class="page-section">
+            <div class="card day-header">
+                <h1>💰 簡易匯率換算</h1>
+                <p>輸入日幣，換算台幣 (以 0.21 計算)</p>
+            </div>
+            <div class="card timeline-card">
+                <div class="result-box" id="twdResult">NT$ 0</div>
+                <div class="calc-input-group">
+                    <input type="number" inputmode="decimal" id="calcInput" class="calc-input" placeholder="輸入金額" oninput="convertCurrency(this.value)">
+                    <button onclick="clearCurrency()" class="calc-btn">清除</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= SOS ================= -->
+        <div id="sos" class="page-section">
+            <div class="card day-header">
+                <h1>🆘 緊急求助</h1>
+                <p>遇到緊急狀況請保持冷靜。</p>
+            </div>
+            <div class="card timeline-card">
+                <a href="tel:110" class="sos-btn bg-police"><i class="fas fa-phone-alt"></i> 110 日本警察局</a>
+                <a href="tel:119" class="sos-btn bg-fire"><i class="fas fa-ambulance"></i> 119 日本救護車/消防</a>
+                
+                <div class="sos-divider-title">🏥 醫療 / 旅遊協助</div>
+                <a href="tel:05038162787" class="sos-btn bg-jnto">
+                    <i class="fas fa-headset"></i> JNTO 觀光醫療熱線
+                </a>
+                <a href="tel:+819019229740" class="sos-btn bg-amda">
+                    <i class="fas fa-passport"></i> 台灣駐福岡辦事處
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 統一 Lightbox DOM -->
+    <div id="myLightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="close-lightbox">&times;</div>
+        <img class="lightbox-img" id="lightboxImg" src="" onclick="toggleZoom(event)">
+    </div>
+
+    <!-- 引入統一共用 JS -->
+    <script src="js/travel.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Travel Diary - 旅遊儀表板</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 font-size=%2280%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>🤍</text></svg>">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script src="js/travelData.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #F2F0E9;
+            --sidebar-bg: #4A403A;
+            --card-bg: #FFFFFF;
+            --text-color: #463F3A;
+            --sub-text: #888888;
+            --accent-color: #8D7B68;
+            --border-color: #E6E2D6;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", "Noto Sans TC", Arial, sans-serif; margin: 0; padding: 30px 20px; }
+
+        .main-container { width: 100%; max-width: 900px; margin: 0 auto; }
+        .top-section { max-width: 480px; margin: 0 auto; }
+        .bottom-section { display: flex; flex-direction: column; gap: 20px; }
+
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .header h1 { margin: 0; font-size: 1.8rem; font-weight: 900; color: var(--text-color); letter-spacing: 1px; }
+        .header-sub { font-size: 0.75rem; color: var(--sub-text); margin-top: 4px; font-weight: bold; letter-spacing: 1px; }
+        .header-icon { font-size: 1.5rem; color: var(--accent-color); }
+
+        .stats-row { display: flex; gap: 15px; margin-bottom: 25px; }
+        .stat-card { flex: 1; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 10px rgba(74, 64, 58, 0.05); }
+        .stat-icon { width: 42px; height: 42px; border-radius: 12px; background: #F8F6F0; color: var(--accent-color); display: flex; justify-content: center; align-items: center; font-size: 1.3rem; }
+        .stat-info { display: flex; flex-direction: column; }
+        .stat-val { font-size: 1.3rem; font-weight: 800; color: var(--text-color); line-height: 1.2; }
+        .stat-label { font-size: 0.75rem; color: var(--sub-text); font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;}
+        .section-title { font-size: 1.1rem; font-weight: bold; color: var(--text-color); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        
+        /* === Upcoming Trip 主卡片 === */
+        .next-trip-card { background: linear-gradient(135deg, var(--sidebar-bg), #302925); border-radius: 20px; padding: 25px; color: white; text-decoration: none; display: block; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(74, 64, 58, 0.2); margin-bottom: 30px; transition: transform 0.2s; }
+        .next-trip-card:active { transform: scale(0.98); }
+        .next-trip-card::after { content: '\f0fb'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: -20px; bottom: -30px; font-size: 8rem; color: rgba(255, 255, 255, 0.05); transform: rotate(-15deg); }
+        .next-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; position: relative; z-index: 2;}
+        .next-city { display: flex; flex-direction: column; }
+        .next-city span:nth-child(1) { font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; line-height: 1.2; }
+        .next-city span:nth-child(2) { font-size: 0.9rem; color: #d5c8b9; letter-spacing: 2px; }
+        .countdown-box { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 10px 15px; text-align: center; }
+        .cd-num { font-size: 1.6rem; font-weight: 900; color: #fff; line-height: 1; }
+        .cd-label { font-size: 0.7rem; color: #eee; font-weight: bold; letter-spacing: 1px; }
+        .next-footer { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; }
+        .next-date { font-size: 0.9rem; color: #ccc; }
+        .next-btn { background: #fff; color: var(--sidebar-bg); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; }
+
+        /* === Upcoming Trip: 無旅程時的 Empty State === */
+        .next-empty-state {
+            background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: 20px;
+            padding: 40px 20px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(74, 64, 58, 0.02);
+        }
+        .next-empty-state-icon { font-size: 3rem; color: var(--accent-color); opacity: 0.2; margin-bottom: 15px; }
+        .next-empty-state-title { font-size: 1.2rem; font-weight: 900; color: var(--text-color); margin-bottom: 5px; }
+        .next-empty-state-desc { font-size: 0.85rem; color: var(--sub-text); }
+
+        /* === Upcoming Trip: 折疊選單 === */
+        .more-trips-accordion {
+            margin-top: -15px; margin-bottom: 30px; background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 16px; overflow: hidden; box-shadow: 0 2px 5px rgba(74, 64, 58, 0.02);
+        }
+        .more-trips-header {
+            padding: 12px 20px; font-size: 0.85rem; font-weight: bold; color: var(--sub-text);
+            display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #F8F6F0; transition: 0.2s;
+        }
+        .more-trips-header:hover { color: var(--accent-color); background: #f2f0e9; }
+        .more-trips-content { display: none; padding: 0 20px; border-top: 1px solid var(--border-color); }
+        .more-trips-content.open { display: block; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .more-trip-item {
+            padding: 15px 0; border-bottom: 1px dashed var(--border-color); display: flex;
+            justify-content: space-between; align-items: center; text-decoration: none; color: var(--text-color);
+        }
+        .more-trip-item:last-child { border-bottom: none; }
+        .mt-title { font-weight: bold; font-size: 0.95rem; transition: 0.2s; display: block; margin-bottom: 3px; }
+        .more-trip-item:hover .mt-title { color: var(--accent-color); }
+        .mt-date { font-size: 0.8rem; color: var(--sub-text); font-weight: bold; }
+        .mt-days { font-size: 0.85rem; font-weight: bold; color: var(--accent-color); }
+
+        /* === Globe === */
+        .globe-wrapper { width: 100%; display: flex; flex-direction: column; }
+        .globe-card { background: #EAE6DF; border: 1px solid var(--border-color); border-radius: 20px; padding: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.02), 0 4px 10px rgba(74, 64, 58, 0.05); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; }
+        #globeViz { width: 100%; aspect-ratio: 1 / 1; cursor: grab; }
+        #globeViz:active { cursor: grabbing; }
+
+        .city-marker { display: flex; flex-direction: column; align-items: center; pointer-events: auto; cursor: pointer; touch-action: none; position: relative; z-index: 1; transition: transform 0.3s ease-out, z-index 0.3s; }
+        .city-marker:hover, .city-marker.selected { transform: scale(1.1) translateY(-3px); z-index: 100; }
+        .marker-icon-wrapper { border-radius: 50%; padding: 4px; border: 2px solid transparent; transition: all 0.3s ease-out; }
+        .marker-icon { font-size: 22px; line-height: 1; color: var(--accent-color); transition: all 0.3s ease-out; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1)); }
+        .city-marker:hover .marker-icon { filter: drop-shadow(0px 0px 8px rgba(141,123,104,0.4)); }
+        .city-marker.selected .marker-icon-wrapper { background: rgba(255,255,255,0.85); border-color: var(--sidebar-bg); box-shadow: 0 4px 10px rgba(74, 64, 58, 0.25); }
+        .city-marker.selected .marker-icon { color: var(--sidebar-bg); filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.2)); }
+        
+        .marker-label { margin-top: 2px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(4px); padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; color: #463F3A; border: 1px solid rgba(141,123,104,0.3); box-shadow: 0 4px 10px rgba(0,0,0,0.08); letter-spacing: 1.5px; white-space: nowrap; transition: 0.3s ease-out; }
+        .city-marker.selected .marker-label { border-color: var(--sidebar-bg); font-weight: 900; }
+
+        /* === Panel 與 Archive === */
+        .past-trips-wrapper { width: 100%; display: flex; flex-direction: column; position: relative; }
+        .archive-top-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .view-all-link { text-decoration: none; color: var(--sub-text); font-weight: bold; font-size: 0.85rem; letter-spacing: 0.5px; transition: color 0.2s; display: flex; align-items: center; gap: 4px; }
+        .view-all-link::after { content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+        .view-all-link:hover { color: var(--accent-color); }
+
+        .panel-content { flex: 1; display: flex; flex-direction: column; transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 1; transform: translateY(0); }
+        .panel-content.anim-fade-out { transition: opacity 0.25s ease-out, transform 0.25s ease-out; opacity: 0; transform: translateY(-5px); }
+        .panel-content.anim-pre-slide { transition: none; opacity: 0; transform: translateY(20px); }
+        
+        .empty-state { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 320px; padding: 20px; }
+        .empty-state-icon { font-size: 68px; color: var(--accent-color); opacity: 0.12; margin-bottom: 20px; }
+        .empty-state-title { font-size: 1.4rem; font-weight: 900; color: var(--text-color); margin-bottom: 12px; letter-spacing: 0.5px; }
+        .empty-state-desc { font-size: 0.9rem; color: var(--sub-text); line-height: 1.6; letter-spacing: 0.5px; max-width: 260px; }
+
+        /* 首頁共用卡片樣式 */
+        .trip-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; width: 100%; margin-bottom: 15px; text-decoration: none; color: var(--text-color); transition: transform 0.2s, box-shadow 0.2s; display: block; box-shadow: 0 4px 10px rgba(74, 64, 58, 0.05); position: relative; overflow: hidden; }
+        .trip-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background-color: var(--accent-color); opacity: 0.8; }
+        .trip-card:active, .trip-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(74, 64, 58, 0.1); }
+        .trip-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .trip-date { color: var(--accent-color); font-size: 0.9em; font-weight: bold; letter-spacing: 0.5px; }
+        
+        .trip-status { font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; font-weight: bold; letter-spacing: 0.5px; }
+        .status-planning { background-color: #EDF1E8; color: #5B6B45; } 
+        .status-upcoming { background-color: #FDF3E7; color: #A66E38; } 
+        .status-traveling { background-color: #EBF2F6; color: #4A657A; } 
+        .status-completed { background-color: #F2F0E9; color: #999999; } 
+
+        .trip-title { font-size: 1.4em; font-weight: bold; margin-bottom: 8px; color: #2c2520; }
+        .trip-info { color: var(--sub-text); font-size: 0.95em; display: flex; align-items: center; }
+        .trip-info i { margin-right: 6px; color: #ccc; }
+        .arrow { float: right; font-size: 1.2em; color: var(--border-color); transition: 0.2s; }
+        .trip-card:hover .arrow { color: var(--accent-color); transform: translateX(5px); }
+
+        .city-panel-title { font-size: 1.3rem; font-weight: 900; color: var(--text-color); margin-bottom: 15px; display: flex; justify-content: space-between; align-items: baseline;}
+        .city-panel-count { font-size: 0.8rem; color: var(--sub-text); font-weight: normal; letter-spacing: 0.5px; }
+        .city-panel-divider { height: 1px; background: var(--border-color); margin-bottom: 15px; }
+
+        @media screen and (min-width: 768px) {
+            .bottom-section { flex-direction: row; align-items: stretch; gap: 40px; margin-top: 20px; }
+            .globe-wrapper { flex: 1; max-width: 50%; position: sticky; top: 20px; }
+            .past-trips-wrapper { flex: 1; max-width: 50%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="top-section">
+            <div class="header">
+                <div>
+                    <h1>Travel Diary</h1>
+                    <div class="header-sub">Personal Travel Planner & Record</div>
+                </div>
+                <i class="fas fa-book-open header-icon"></i>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-suitcase-rolling"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-val" id="stat-trips">--</span>
+                        <span class="stat-label">Trips</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-val" id="stat-regions">--</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title"><i class="fas fa-star" style="color: #f39c12;"></i> 即將出發</div>
+            
+            <!-- Upcoming Trip 容器 -->
+            <div id="upcoming-trip-container"></div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="globe-wrapper">
+                <div class="section-title"><i class="fas fa-globe-asia" style="color: var(--accent-color);"></i> Travel Map</div>
+                <div class="globe-card">
+                    <div id="globeViz"></div>
+                </div>
+            </div>
+
+            <div class="past-trips-wrapper">
+                <div class="archive-top-header">
+                    <div class="section-title" style="margin-bottom:0;"><i class="fas fa-book-open" style="color: var(--accent-color);"></i> All Trips</div>
+                    <a href="TravelArchive.html" class="view-all-link">View All</a>
+                </div>
+                <!-- Archive / City Panel 容器 -->
+                <div id="archive-content" class="panel-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. 動態更新 Stats
+            const allTrips = TravelUtils.getAllTrips();
+            const uniqueCountries = new Set(allTrips.map(t => t.country)).size;
+            document.getElementById('stat-trips').innerText = allTrips.length;
+            document.getElementById('stat-regions').innerText = uniqueCountries;
+
+            // 2. 動態渲染 Upcoming Trip (距離最近的一趟未出發旅程)
+            const upcomingTrips = TravelUtils.getUpcomingTrips();
+            const upcomingContainer = document.getElementById('upcoming-trip-container');
+
+            if (upcomingTrips.length === 0) {
+                upcomingContainer.innerHTML = `
+                    <div class="next-empty-state">
+                        <div class="next-empty-state-icon"><i class="fas fa-earth-asia"></i></div>
+                        <div class="next-empty-state-title">下一趟旅行</div>
+                        <div class="next-empty-state-desc">開始規劃新的旅程</div>
+                    </div>
+                `;
+            } else {
+                const nextTrip = upcomingTrips[0];
+                const diffDays = TravelUtils.getDaysUntil(nextTrip.start);
+                const daysText = diffDays > 0 ? diffDays : "0";
+                const labelText = diffDays > 0 ? "DAYS" : "出發啦!";
+                
+                let upcomingHtml = `
+                    <a href="${nextTrip.page}" class="next-trip-card">
+                        <div class="next-header">
+                            <div class="next-city">
+                                <span>${nextTrip.flag} ${nextTrip.city}</span>
+                                <span>${nextTrip.countryEn}</span>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="cd-num">${daysText}</div>
+                                <div class="cd-label">${labelText}</div>
+                            </div>
+                        </div>
+                        <div class="next-footer">
+                            <div class="next-date"><i class="far fa-calendar-alt"></i> ${TravelUtils.formatTripDate(nextTrip.start, nextTrip.end)}</div>
+                            <div class="next-btn">查看行程 <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+                `;
+
+                if (upcomingTrips.length > 1) {
+                    const moreTrips = upcomingTrips.slice(1);
+                    let moreHtml = `
+                        <div class="more-trips-accordion">
+                            <div class="more-trips-header" onclick="this.nextElementSibling.classList.toggle('open')">
+                                <span><i class="fas fa-suitcase"></i> 還有 ${moreTrips.length} 趟旅程</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="more-trips-content">
+                    `;
+                    moreTrips.forEach(t => {
+                        const daysLeft = TravelUtils.getDaysUntil(t.start);
+                        moreHtml += `
+                            <a href="${t.page}" class="more-trip-item">
+                                <div>
+                                    <span class="mt-title">${t.flag} ${t.city}</span>
+                                    <span class="mt-date">${t.start.replace(/-/g, '/')}</span>
+                                </div>
+                                <span class="mt-days">${daysLeft} Days</span>
+                            </a>
+                        `;
+                    });
+                    moreHtml += `</div></div>`;
+                    upcomingHtml += moreHtml;
+                }
+                upcomingContainer.innerHTML = upcomingHtml;
+            }
+
+            // 3. Globe Markers 資料 (所有旅程)
+            const uniquePlacesMap = new Map();
+            allTrips.forEach(t => {
+                if(!uniquePlacesMap.has(t.city)) {
+                    uniquePlacesMap.set(t.city, { city: t.city, lat: t.lat, lng: t.lng, flag: t.flag });
+                }
+            });
+            const globeMarkersData = [
+                { city: config.home.city, lat: config.home.lat, lng: config.home.lng, icon: config.home.icon, isHome: true }, 
+                ...Array.from(uniquePlacesMap.values())
+            ];
+
+            let activeCity = null;
+            const archiveContent = document.getElementById('archive-content');
+
+            // 4. 初始化 Globe
+            const globeContainer = document.getElementById('globeViz');
+            const globe = Globe()(globeContainer)
+                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-day.jpg') 
+                .backgroundColor('rgba(0,0,0,0)')
+                .width(globeContainer.clientWidth)
+                .height(globeContainer.clientWidth)
+                .showAtmosphere(true)
+                .atmosphereColor('#F2F0E9')
+                .atmosphereAltitude(0.2)
+                .htmlElementsData(globeMarkersData)
+                .htmlElement(d => {
+                    const el = document.createElement('div');
+                    const isSelected = d.city === activeCity ? 'selected' : '';
+                    const iconHtml = d.isHome ? d.icon : '<i class="fas fa-map-marker-alt"></i>';
+                    const displayLabel = d.isHome ? d.city : `${d.flag} ${d.city}`;
+                    
+                    el.innerHTML = `
+                        <div style="transform: translate(-50%, -100%); pointer-events: none;">
+                            <div class="city-marker ${isSelected}" id="marker-${d.city}">
+                                <div class="marker-icon-wrapper">
+                                    <div class="marker-icon">${iconHtml}</div>
+                                </div>
+                                <div class="marker-label">${displayLabel}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    const markerBody = el.querySelector('.city-marker');
+                    let startX, startY;
+                    markerBody.addEventListener('pointerdown', (e) => {
+                        startX = e.clientX; startY = e.clientY;
+                    });
+                    markerBody.addEventListener('pointerup', (e) => {
+                        const dx = e.clientX - startX;
+                        const dy = e.clientY - startY;
+                        
+                        if (Math.sqrt(dx*dx + dy*dy) < 5) {
+                            globe.pointOfView({ lat: d.lat, lng: d.lng, altitude: config.globe.focusAltitude }, config.globe.flyDuration); 
+                            updateCityPanel(d.isHome ? null : d.city);
+                        }
+                    });
+
+                    return el;
+                });
+
+            globe.controls().autoRotate = true;
+            globe.controls().autoRotateSpeed = config.globe.autoRotateSpeed;
+            globe.pointOfView({ lat: config.home.lat, lng: config.home.lng, altitude: config.globe.viewAltitude });
+
+            window.addEventListener('resize', () => {
+                globe.width(globeContainer.clientWidth);
+                globe.height(globeContainer.clientWidth);
+            });
+
+            // 5. 右側 Panel 動態更新 (★ 核心更新：使用 getAllTrips 顯示該城市所有時期的旅程)
+            function updateCityPanel(selectedCity) {
+                if (activeCity === selectedCity) return; 
+                activeCity = selectedCity;
+
+                document.querySelectorAll('.city-marker').forEach(el => el.classList.remove('selected'));
+                if (selectedCity) {
+                    const targetMarker = document.getElementById(`marker-${selectedCity}`);
+                    if(targetMarker) targetMarker.classList.add('selected');
+                }
+
+                archiveContent.classList.add('anim-fade-out');
+
+                setTimeout(() => {
+                    if (!selectedCity) {
+                        archiveContent.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-map-location-dot empty-state-icon"></i>
+                                <div class="empty-state-title">Select a Destination</div>
+                                <div class="empty-state-desc">Choose a city on the globe<br>to browse all trips<br>for that destination.</div>
+                            </div>
+                        `;
+                    } else {
+                        // 提取該城市所有旅程 (不限狀態)
+                        const cityTrips = allTrips.filter(t => t.city === selectedCity);
+                        
+                        archiveContent.innerHTML = `
+                            <div class="city-panel-title">
+                                <span>${cityTrips[0].flag} ${selectedCity}</span>
+                                <span class="city-panel-count">${cityTrips.length} Trips</span>
+                            </div>
+                            <div class="city-panel-divider"></div>
+                            ${cityTrips.map(t => TravelUtils.generateTripCard(t)).join('')}
+                        `;
+                    }
+                    
+                    archiveContent.classList.remove('anim-fade-out');
+                    archiveContent.classList.add('anim-pre-slide');
+                    void archiveContent.offsetWidth; 
+                    archiveContent.classList.remove('anim-pre-slide');
+                    
+                }, config.anim.fadeOut);
+            }
+
+            // 初次載入
+            updateCityPanel(null);
+        });
+    </script>
+</body>
+</html>

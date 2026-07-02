@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>香港 3 天 2 夜</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 font-size=%2280%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>🥧</text></svg>">
+    
+    <!-- 引入 Font Awesome 與 共用 CSS (已移除所有內聯樣式) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/travel.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ================= 統一 Sidebar ================= -->
+    <nav class="sidebar">
+        <div class="menu-item active" onclick="showPage('day1')">
+            <i class="fas fa-plane-arrival"></i><span>Day 1</span>
+        </div>
+        <div class="menu-item" onclick="showPage('day2')">
+            <i class="fas fa-camera"></i><span>Day 2</span>
+        </div>
+        <div class="menu-item" onclick="showPage('day3')">
+            <i class="fas fa-plane-departure"></i><span>Day 3</span>
+        </div>
+        <div class="menu-item" onclick="showPage('money')">
+            <i class="fas fa-calculator"></i><span>匯率</span>
+        </div>
+        <div class="menu-item" onclick="showPage('sos')">
+            <i class="fas fa-exclamation-triangle"></i><span>緊急</span>
+        </div>
+    </nav>
+
+    <!-- ================= 右側內容區 ================= -->
+    <!-- ★ data-trip-id 用於獨立記憶體快取, data-currency-rate 用於匯率計算 ★ -->
+    <main class="content" data-trip-id="hongkong2025" data-currency-rate="4.1">
+        <a href="index.html" class="back-home">↩ Dashboard</a>
+        
+        <!-- 統一 Header -->
+        <div class="travel-header">
+            <div class="th-left">
+                <div class="th-flag">🇭🇰</div>
+                <div class="th-title">
+                    <h1>Hong Kong</h1>
+                    <span>Hong Kong</span>
+                </div>
+            </div>
+            <div class="th-right">
+                <div class="th-date">2025.06.13 - 06.15</div>
+                <div class="th-days">3 Days</div>
+            </div>
+        </div>
+
+        <!-- ================= Day 1 ================= -->
+        <div id="day1" class="page-section active">
+            
+            <div class="card">
+                <h1>Day 1: 06/13 (五)</h1>
+                <p>抵達香港 • 太平山夜景</p>
+            </div>
+
+            <!-- 天氣小工具 (香港) -->
+            <div class="card" style="min-height: 120px;">
+                <div style="font-size: 0.9rem; color: #888; margin-bottom: 5px;">
+                    <i class="fas fa-cloud-sun"></i> 當地天氣預報
+                </div>
+                <div class="weather-container">
+                    <a class="weatherwidget-io" href="https://forecast7.com/en/22d32114d17/hong-kong/" data-label_1="HONG KONG" data-label_2="香港天氣" data-font="Arial" data-icons="Climacons Animated" data-mode="Forecast" data-days="3" data-theme="pure" data-accent="#8D7B68" data-textColor="#463F3A" data-highColor="#D35400" data-lowColor="#7FB3D5" data-sunColor="#F39C12" data-cloudColor="#BDC3C7" style="display: block; width: 100%; height: 100%;">HONG KONG WEATHER</a>
+                </div>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');</script>
+            </div>
+
+            <!-- 去程航班資訊 -->
+            <div class="card">
+                <h2>🛫 去程航班資訊</h2>
+                <div class="flight-box">
+                    <div class="flight-route">TPE <span class="city-name">台北</span> <i class="fas fa-long-arrow-alt-right" style="color: #ccc; margin: 0 5px;"></i> HKG <span class="city-name">香港</span></div>
+                    <div class="flight-number-box"><span class="airline-name">中華航空</span><span class="flight-code">CI 909</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">起飛</span><span class="info-value">11:00</span></div>
+                    <div class="info-group" style="text-align: center;">
+                        <span class="info-label">飛行時間</span><span class="info-value" style="font-size: 1rem;">2h 00m</span>
+                    </div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">抵達</span><span class="info-value">13:00</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">座位</span><span class="info-value">54A, 54B</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">航廈</span><span class="info-value">第一航廈</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">託運行李</span><span class="info-value">23 kg</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">手提行李</span><span class="info-value">7 kg</span></div>
+                </div>
+            </div>
+
+            <!-- 住宿資訊 -->
+            <div class="card">
+                <h2>🏨 住宿資訊</h2>
+                <div class="hotel-box">
+                    <div class="info-group">
+                        <span class="info-label">飯店名稱</span>
+                        <span class="info-value highlight">九龍酒店</span>
+                    </div>
+                </div>
+                <div class="hotel-box">
+                    <div class="info-group">
+                        <span class="info-label">香港尖沙咀彌敦道19-21號</span>
+                        <a href="https://maps.app.goo.gl/EKaswc69Fvx1nuZb8" target="_blank" class="info-value" style="font-size: 0.9rem; text-decoration: underline;">
+                            九龍酒店... (點我導航)
+                        </a>
+                    </div>
+                </div>
+                <div class="hotel-box">
+                    <div class="info-group"><span class="info-label">Check-in</span><span class="info-value">14:00 後</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">Check-out</span><span class="info-value">11:00 前</span></div>
+                </div>
+            </div>
+
+            <!-- Day 1 詳細行程 -->
+            <div class="card">
+                <h2>🗓️ 今日行程</h2>
+                <div class="tip-box" style="margin-bottom: 20px; margin-top:0;">
+                    <span class="tip-title">💡 交通小撇步</span>
+                    太平山纜車成人來回 HK$108，摩天觀景台成人票價 HK$75
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-col">13:20</div>
+                    <div class="event-col">
+                        <span class="event-title">入境 / 領取行李</span>
+                        <div class="event-desc">香港國際機場</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">13:40</div>
+                    <div class="event-col">
+                        <span class="event-title">搭乘機場快線</span>
+                        <div class="event-desc">前往市區</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">15:00</div>
+                    <div class="event-col">
+                        <span class="event-title">飯店 Check-in</span>
+                        <div class="event-desc">九龍酒店</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">16:00</div>
+                    <div class="event-col">
+                        <span class="event-title">午餐：<a href="https://maps.app.goo.gl/EjUJ3qVuWebungwq6" target="_blank" class="event-link">一點心 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">17:00</div>
+                    <div class="event-col">
+                        <span class="event-title">點心：<a href="https://maps.app.goo.gl/kYdTCYReTGo434V69" target="_blank" class="event-link">嘉多娜麵包店 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">18:00</div>
+                    <div class="event-col">
+                        <span class="event-title">景點：<a href="https://maps.app.goo.gl/MPG24cJKzEwBTqfs8" target="_blank" class="event-link">山頂纜車 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">18:20</div>
+                    <div class="event-col">
+                        <span class="event-title">景點：<a href="https://maps.app.goo.gl/K1PdYtuQyKC4BGM1A" target="_blank" class="event-link">凌霄閣 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">21:00</div>
+                    <div class="event-col">
+                        <span class="event-title">消夜：<a href="https://maps.app.goo.gl/dW3N7We383QThHqZ9" target="_blank" class="event-link">Jollibee <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">22:00</div>
+                    <div class="event-col">
+                        <span class="event-title">回飯店</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Day 2 ================= -->
+        <div id="day2" class="page-section">
+            <div class="card">
+                <h1>Day 2: 06/14 (六)</h1>
+                <p>市區探索 • 購物美食</p>
+            </div>
+
+            <div class="card">
+                <h2>🗓️ 行程內容</h2>
+                <div class="timeline-item">
+                    <div class="time-col">11:00</div>
+                    <div class="event-col">
+                        <span class="event-title">早餐：<a href="https://maps.app.goo.gl/UjLLrDPzjtCjwC1D6" target="_blank" class="event-link">炳記茶檔 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">12:40</div>
+                    <div class="event-col">
+                        <span class="event-title">午餐：<a href="https://maps.app.goo.gl/oUz46k46rFbuQrYm6" target="_blank" class="event-link">榕哥燒鵝餐室 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">14:00</div>
+                    <div class="event-col">
+                        <span class="event-title">購物：<a href="https://maps.app.goo.gl/E43j7bYzQxsE5U7RA" target="_blank" class="event-link">80M巴士專門店 - 太子旗艦店 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">14:30</div>
+                    <div class="event-col">
+                        <span class="event-title">購物：<a href="https://maps.app.goo.gl/TByXauGQk7tQCgtF6" target="_blank" class="event-link">深水埗玩具街 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">16:30</div>
+                    <div class="event-col">
+                        <span class="event-title">購物：<a href="https://maps.app.goo.gl/1QoRGwahRvpfZM826" target="_blank" class="event-link">K11 Sephora <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">18:00</div>
+                    <div class="event-col">
+                        <span class="event-title">晚餐：<a href="https://maps.app.goo.gl/UUAv5ns6pqWyVc3x5" target="_blank" class="event-link">忠記粥品 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">19:00</div>
+                    <div class="event-col">
+                        <span class="event-title">景點：<a href="https://maps.app.goo.gl/LQeYR2cAmXrwTAC48" target="_blank" class="event-link">石板街 <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">20:30</div>
+                    <div class="event-col">
+                        <span class="event-title">消夜：<a href="https://maps.app.goo.gl/iW7wtKTuuVDnCM6d9" target="_blank" class="event-link">祥興記上海生煎包(尖沙咀) <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">21:00</div>
+                    <div class="event-col">
+                        <span class="event-title">回飯店</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= Day 3 ================= -->
+        <div id="day3" class="page-section">
+            <div class="card">
+                <h1>Day 3: 06/15 (日)</h1>
+                <p>尖沙咀 • 回家</p>
+            </div>
+
+            <!-- 回程航班資訊 -->
+            <div class="card">
+                <h2>🛫 回程航班資訊</h2>
+                <div class="flight-box">
+                    <div class="flight-route">HKG <span class="city-name">香港</span> <i class="fas fa-long-arrow-alt-right" style="color: #ccc; margin: 0 5px;"></i> TPE <span class="city-name">台北</span></div>
+                    <div class="flight-number-box"><span class="airline-name">中華航空</span><span class="flight-code">CI 916</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">起飛</span><span class="info-value">17:30</span></div>
+                    <div class="info-group" style="text-align: center;"><span class="info-label">飛行時間</span><span class="info-value" style="font-size: 1rem;">1h 55m</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">抵達</span><span class="info-value">19:25</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">座位</span><span class="info-value">22A, 22B</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">航廈</span><span class="info-value">第一航廈</span></div>
+                </div>
+                <div class="flight-box">
+                    <div class="info-group"><span class="info-label">託運行李</span><span class="info-value">23 kg</span></div>
+                    <div class="info-group" style="text-align: right;"><span class="info-label">手提行李</span><span class="info-value">7 kg</span></div>
+                </div>
+            </div>
+
+            <!-- Day 3 詳細行程 -->
+            <div class="card">
+                <h2>🗓️ 最後行程</h2>
+                <div class="timeline-item">
+                    <div class="time-col">11:00</div>
+                    <div class="event-col">
+                        <span class="event-title"><a href="https://maps.app.goo.gl/fSLb9viqEpAYMzUF7" target="_blank" class="event-link">Hashtag B (尖沙咀) <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">11:30</div>
+                    <div class="event-col">
+                        <span class="event-title">午餐：<a href="https://maps.app.goo.gl/bczqiwhufbvjFRGx6" target="_blank" class="event-link">紅茶 (尖沙咀店) <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">12:30</div>
+                    <div class="event-col">
+                        <span class="event-title"><a href="https://maps.app.goo.gl/sZKXD2f8g9MDUQHq9" target="_blank" class="event-link">Bakehouse <i class="fas fa-map-marker-alt"></i></a></span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">13:30</div>
+                    <div class="event-col">
+                        <span class="event-title">搭乘機場快線</span>
+                        <div class="event-desc">前往香港機場</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 匯率 & SOS ================= -->
+        <div id="money" class="page-section">
+            <div class="card">
+                <h1>💰 簡易匯率換算</h1>
+                <p>輸入港幣 (HKD)，換算台幣 (約 1:4.1)</p>
+                <div class="result-box" id="twdResult" style="background: #333; color: #0f0; padding: 15px; font-family: monospace; font-size: 1.5rem; text-align: right; border-radius: 5px; margin-bottom: 10px;">NT$ 0</div>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" inputmode="decimal" id="calcInput" class="calc-input" placeholder="輸入港幣金額" oninput="convertCurrency(this.value)" style="flex: 1; padding: 10px; font-size: 1.2rem; border-radius: 5px; border: 1px solid #ccc;">
+                    <button onclick="clearCurrency()" style="background-color: #95a5a6; color: white; border: none; border-radius: 5px; padding: 0 20px; font-weight: bold; font-size: 1rem; cursor: pointer;">清除</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="sos" class="page-section">
+            <div class="card">
+                <h1>🆘 緊急求助</h1>
+                <p>遇到緊急狀況請保持冷靜。</p>
+                <a href="tel:999" class="sos-btn bg-police"><i class="fas fa-phone-alt"></i> 999 報警/急救/火警</a>
+                
+                <p style="margin-top: 20px; font-weight: bold; border-top: 1px solid #eee; padding-top: 15px; color:#463F3A;">🏥 協助 / 駐外單位</p>
+                <a href="tel:+85261439012" class="sos-btn bg-embassy">
+                    <i class="fas fa-passport"></i> 台北駐香港辦事處
+                    <div style="font-size: 0.75rem; font-weight: normal; margin-top: 3px; display: block; width: 100%;">急難救助 (24H)</div>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 統一 Lightbox DOM -->
+    <div id="myLightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="close-lightbox">&times;</div>
+        <img class="lightbox-img" id="lightboxImg" src="" onclick="toggleZoom(event)">
+    </div>
+
+    <!-- ★★★ 引入統一共用 JS (無任何內聯程式碼) ★★★ -->
+    <script src="js/travel.js"></script>
+
+</body>
+</html>
