@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TRAVEL DIARY - CORE STYLES (v3.7 Final Template)
+   TRAVEL DIARY - CORE STYLES (v3.6 Final Template - Mobile UX Fix)
    ========================================================================== */
 
 /* ================= 1. VARIABLES & RESET ================= */
@@ -84,20 +84,20 @@ body {
 .menu-icon { width: 24px; font-size: 1.1rem; margin-right: 10px; text-align: center; color: var(--accent-color); transition: color 0.2s; }
 .menu-item.active .menu-icon { color: #FFFFFF; }
 
-.dot-icon { width: 24px; text-align: center; margin-right: 10px; font-size: 0.85rem; color: var(--accent-color); display: inline-block; }
+.dot-icon { width: 24px; text-align: center; margin-right: 10px; font-size: 0.85rem; color: var(--accent-color); display: inline-block; flex-shrink: 0;}
 .menu-item .dot-icon::before { font-family: "Font Awesome 6 Free"; font-weight: 400; content: '\f111'; }
 .menu-item.active .dot-icon::before { font-family: "Font Awesome 6 Free"; font-weight: 900; content: '\f111'; }
 .menu-item.active .dot-icon { color: #FFFFFF; }
 
-.menu-text { font-size: 0.95rem; font-weight: bold; flex: 1; }
-.menu-badge { font-size: 0.65rem; padding: 2px 8px; border-radius: 20px; background-color: rgba(141, 123, 104, 0.15); color: var(--accent-color); font-weight: bold; margin-left: 10px; }
+.menu-text { font-size: 0.95rem; font-weight: bold; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.menu-badge { font-size: 0.65rem; padding: 2px 8px; border-radius: 20px; background-color: rgba(141, 123, 104, 0.15); color: var(--accent-color); font-weight: bold; margin-left: 10px; white-space: nowrap; }
 .menu-item.active .menu-badge { background-color: rgba(255, 255, 255, 0.25); color: #FFFFFF; }
 
 .menu-item.sos-item .menu-icon { color: #e74c3c; opacity: 0.85; }
 .menu-item.sos-item:hover { background-color: rgba(231, 76, 60, 0.08); }
 .menu-item.sos-item.active { background-color: #e74c3c; }
 
-/* ================= 5. CARD ================= */
+/* ================= 5. CARD & LAYOUT ================= */
 .content { margin-left: 240px; padding: 30px; min-height: 100vh; padding-bottom: 120px; max-width: 1000px; }
 .page-section { display: none; animation: fadeIn 0.4s ease; }
 .page-section.active { display: block; }
@@ -113,7 +113,6 @@ body {
 .card h2 { color: var(--accent-color); font-size: 1.1rem; font-weight: 900; letter-spacing: 1px; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; display: inline-block; }
 .card p { line-height: 1.7; color: #665C54; margin-bottom: 15px; }
 
-/* ★ Day 主標題、日期 Badge、進度與天氣 */
 .day-header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
 .day-header h1 { margin: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 1.8rem; color: var(--text-color); letter-spacing: 1px; }
 .day-date-badge { font-size: 0.75rem; font-weight: 500; background-color: #FAF9F7; color: #999088; padding: 3px 12px; border-radius: 20px; letter-spacing: 0.5px; border: 1px solid #F0EBE5; }
@@ -145,7 +144,6 @@ body {
 .event-link:hover { color: var(--accent-color); border-bottom: 1px solid var(--accent-color); }
 .event-link i { color: var(--accent-color); margin-left: 3px; }
 
-/* 保留給 JS 動態套用的 Currently Active 狀態 */
 .timeline-item.is-current { background-color: rgba(141, 123, 104, 0.04); border-radius: 12px; padding: 18px 16px; margin-left: -16px; margin-right: -16px; border-left: 3px solid var(--accent-color); border-bottom: 1px solid transparent; margin-bottom: 20px; }
 .timeline-item.is-current .time-col { color: var(--accent-color); }
 
@@ -153,7 +151,6 @@ body {
 .branch-container { display: flex; flex-direction: column; gap: 16px; margin-left: 15px; margin-bottom: 24px; padding-left: 15px; border-left: 1px dashed var(--border-color); }
 .branch-details { border-radius: 12px; transition: 0.3s; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); overflow: hidden; }
 
-/* Branch 層級配置 */
 .branch-details.best-plan { background-color: #FDFBF7; border-left: 4px solid var(--accent-color); }
 .branch-details.plan-a { background-color: #FFFFFF; border-left: 4px solid #D6CFC7; }
 .branch-details.plan-b { background-color: #F9F9F9; border-left: 4px solid #EAEAEA; }
@@ -163,7 +160,6 @@ body {
 .branch-details summary > span { display: flex; align-items: center; gap: 8px; }
 .branch-details summary > span i { width: 20px; text-align: center; font-size: 1.05rem; }
 
-/* 統一柔和的大地色 Branch Icons */
 .branch-icon-crown { color: var(--accent-color); }
 .branch-icon-sun { color: #A49381; }
 .branch-icon-umbrella { color: #8A8175; }
@@ -171,8 +167,6 @@ body {
 .branch-content { padding: 0 16px 16px 16px; border-top: 1px dashed rgba(0,0,0,0.1); margin-top: 5px; padding-top: 16px; }
 .toggle-icon { transition: transform 0.3s ease; color: #999; }
 .branch-details[open] .toggle-icon { transform: rotate(180deg); color: inherit; }
-
-/* Branch Timeline */
 .branch-timeline-item { display: flex; align-items: flex-start; border-bottom: 1px dashed var(--border-color); margin-bottom: 10px; padding-bottom: 10px; }
 .branch-timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
@@ -200,7 +194,6 @@ body {
 .hotel-address-box { align-items: flex-start; }
 .hotel-name-large { font-size: 1.3rem; color: var(--accent-color); font-weight: bold; }
 .hotel-address { font-size: 0.85rem; color: #888; font-weight: normal; margin-top: 4px; line-height: 1.4; max-width: 260px; display: block; }
-.highlight { color: var(--accent-color); }
 
 .map-btn {
     display: inline-flex; align-items: center; background: #F8F6F0; color: var(--text-color);
@@ -229,15 +222,12 @@ body {
 .shop-loc { font-size: 0.8rem; color: #888; }
 .shop-check { width: 25px; height: 25px; cursor: pointer; accent-color: var(--accent-color); margin-left: 10px; }
 
-/* 購物清單完成狀態 */
 .shop-item.bought { opacity: 0.6; background-color: #fcfcfc; }
 .shop-item.bought .shop-name-text { text-decoration: line-through; color: #888; }
 .shop-bought-badge { display: none; font-size: 0.7rem; color: #4CAF50; background: #E8F5E9; padding: 2px 6px; border-radius: 4px; font-weight: bold; letter-spacing: 0.5px; }
 .shop-item.bought .shop-bought-badge { display: inline-flex; align-items: center; gap: 3px; }
-
 .shop-memo-input { width: 100%; height: 200px; padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); resize: none; background: #FAFAFA; font-family: inherit; color: var(--text-color); font-size: 1rem; line-height: 1.5; box-sizing: border-box; }
 
-/* 圖片燈箱 */
 .menu-thumb { width: 150px; height: 100px; object-fit: cover; border-radius: 8px; cursor: pointer; margin-top: 10px; border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.2s; display: block; }
 .menu-thumb:active { transform: scale(0.95); opacity: 0.8; }
 .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow: auto; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
@@ -266,23 +256,48 @@ body {
 @media screen and (min-width: 481px) {
     .hotel-address { max-width: 300px; }
 }
+
 @media screen and (max-width: 768px) {
-    .sidebar { width: 75px; padding: 20px 10px; align-items: center; }
-    .content { margin-left: 75px; padding: 20px; }
-    .sidebar-group-title, .sidebar-divider, .menu-text, .menu-badge { display: none; }
-    .sidebar-group-content { display: flex; flex-direction: column; width: 100%; }
-    .sidebar-group { margin-bottom: 0; }
-    .menu-item { justify-content: center; padding: 15px 0; border-radius: 12px; margin-bottom: 10px; }
+    .sidebar { 
+        width: 140px; padding: 20px 12px; align-items: flex-start; 
+    }
+    .content { margin-left: 140px; padding: 20px; }
+    
+    .sidebar-group-title { font-size: 0.65rem; padding-left: 8px; margin-bottom: 8px; }
+    .sidebar-divider { margin: 10px 0; }
+    
+    .menu-item { padding: 10px 10px; margin-bottom: 4px; flex-wrap: nowrap; justify-content: flex-start; }
     .menu-item:hover { transform: none; }
-    .menu-icon, .dot-icon { margin-right: 0; font-size: 1.3rem; }
-    .menu-item.active::before { left: -5px; top: 25%; height: 50%; width: 2px; }
+    .menu-item.active::before { left: -10px; }
+    
+    .menu-icon { width: 20px; font-size: 1rem; margin-right: 8px; }
+    .dot-icon { width: 20px; font-size: 0.8rem; margin-right: 8px; }
+    .menu-text { font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    
+    .menu-badge { font-size: 0.6rem; padding: 2px 6px; margin-left: 6px; white-space: nowrap; }
 }
-@media screen and (max-width: 450px) {
+
+@media screen and (max-width: 480px) {
+    .sidebar { width: 120px; padding: 20px 8px; }
+    .content { margin-left: 120px; padding: 15px; }
+    
+    .sidebar-group-title { font-size: 0.6rem; padding-left: 6px; margin-bottom: 6px; }
+    .sidebar-group-toggle { display: none; } 
+    
+    .menu-item { padding: 10px 8px; }
+    .menu-item.active::before { left: -6px; width: 2px; }
+    
+    .menu-icon, .dot-icon { width: 18px; font-size: 0.95rem; margin-right: 6px; }
+    .dot-icon { font-size: 0.75rem; }
+    
+    .menu-text { font-size: 0.8rem; }
+    .menu-badge { font-size: 0.55rem; padding: 2px 4px; margin-left: 4px; }
+
     .flight-route { font-size: 1.15rem; }
     .city-name { font-size: 0.7rem; margin-left: 3px; }
     .flight-code { font-size: 1.25rem; }
     .card { padding: 15px 12px; } 
-    .time-col { width: 55px; font-size: 0.95rem; }
+    .time-col { width: 60px; font-size: 0.95rem; }
     .event-title { font-size: 1rem; } 
     .event-desc { font-size: 0.8rem; }   
     .transport-tag { padding: 1px 4px; font-size: 0.65rem; } 
