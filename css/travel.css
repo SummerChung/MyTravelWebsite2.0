@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TRAVEL DIARY - CORE STYLES (v3.7 Final Template)
+   TRAVEL DIARY - CORE STYLES (v3.7 Final Template - Visual Balance Polish)
    ========================================================================== */
 
 /* ================= 1. VARIABLES & RESET ================= */
@@ -68,7 +68,7 @@ body {
 .sidebar-divider { width: 100%; height: 1px; background-color: var(--border-color); margin: 15px 0; border: none; }
 
 .menu-item {
-    width: 100%; display: flex; align-items: center;
+    width: 100%; display: flex; align-items: center; flex-wrap: nowrap; /* ★ 強制同一行 */
     padding: 10px 12px; border-radius: 8px; cursor: pointer;
     color: var(--text-color); margin-bottom: 4px; position: relative;
     transition: all 0.2s ease;
@@ -81,16 +81,16 @@ body {
     height: 60%; width: 2px; background-color: var(--accent-color); border-radius: 4px; opacity: 0.7;
 }
 
-.menu-icon { width: 24px; font-size: 1.1rem; margin-right: 10px; text-align: center; color: var(--accent-color); transition: color 0.2s; }
+.menu-icon { width: 24px; font-size: 1.1rem; margin-right: 10px; text-align: center; color: var(--accent-color); transition: color 0.2s; flex-shrink: 0; }
 .menu-item.active .menu-icon { color: #FFFFFF; }
 
-.dot-icon { width: 24px; text-align: center; margin-right: 10px; font-size: 0.85rem; color: var(--accent-color); display: inline-block; }
+.dot-icon { width: 24px; text-align: center; margin-right: 10px; font-size: 0.85rem; color: var(--accent-color); display: inline-block; flex-shrink: 0; }
 .menu-item .dot-icon::before { font-family: "Font Awesome 6 Free"; font-weight: 400; content: '\f111'; }
 .menu-item.active .dot-icon::before { font-family: "Font Awesome 6 Free"; font-weight: 900; content: '\f111'; }
 .menu-item.active .dot-icon { color: #FFFFFF; }
 
-.menu-text { font-size: 0.95rem; font-weight: bold; flex: 1; }
-.menu-badge { font-size: 0.65rem; padding: 2px 8px; border-radius: 20px; background-color: rgba(141, 123, 104, 0.15); color: var(--accent-color); font-weight: bold; margin-left: 10px; }
+.menu-text { font-size: 0.95rem; font-weight: bold; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.menu-badge { font-size: 0.65rem; padding: 2px 8px; border-radius: 20px; background-color: rgba(141, 123, 104, 0.15); color: var(--accent-color); font-weight: bold; margin-left: 10px; flex-shrink: 0; }
 .menu-item.active .menu-badge { background-color: rgba(255, 255, 255, 0.25); color: #FFFFFF; }
 
 .menu-item.sos-item .menu-icon { color: #e74c3c; opacity: 0.85; }
@@ -113,7 +113,6 @@ body {
 .card h2 { color: var(--accent-color); font-size: 1.1rem; font-weight: 900; letter-spacing: 1px; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; display: inline-block; }
 .card p { line-height: 1.7; color: #665C54; margin-bottom: 15px; }
 
-/* ★ Day 主標題、日期 Badge、進度與天氣 */
 .day-header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
 .day-header h1 { margin: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 1.8rem; color: var(--text-color); letter-spacing: 1px; }
 .day-date-badge { font-size: 0.75rem; font-weight: 500; background-color: #FAF9F7; color: #999088; padding: 3px 12px; border-radius: 20px; letter-spacing: 0.5px; border: 1px solid #F0EBE5; }
@@ -124,17 +123,12 @@ body {
 
 .timeline-card { margin-top: 30px; }
 
-/* 天氣專用卡片 (首頁) */
-.weather-card { min-height: 120px; }
-.weather-title { font-size: 0.9rem; color: #888; margin-bottom: 5px; }
-.weatherwidget-io { display: block; width: 100%; height: 100%; }
-
-/* 小撇步 Tip Box */
+/* ================= 6. TIP BOX ================= */
 .tip-box { background: #F8F6F0; border-left: 4px solid var(--accent-color); padding: 16px 20px; border-radius: 12px; color: var(--text-color); margin-bottom: 20px; box-shadow: 0 2px 8px rgba(74, 64, 58, 0.03); }
 .tip-box-top { margin-top: 0; margin-bottom: 20px; }
 .tip-title { color: var(--accent-color); font-weight: 900; font-size: 1.05rem; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; letter-spacing: 0.5px; }
 
-/* ================= 6. TIMELINE ================= */
+/* ================= 7. TIMELINE ================= */
 .timeline-item { display: flex; align-items: flex-start; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
 .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .timeline-item-divider { border-top: 1px solid var(--border-color); padding-top: 20px; }
@@ -150,15 +144,13 @@ body {
 .event-link:hover { color: var(--accent-color); border-bottom: 1px solid var(--accent-color); }
 .event-link i { color: var(--accent-color); margin-left: 3px; }
 
-/* 目前時間高亮效果 (JS 動態加入 is-current 啟用) */
 .timeline-item.is-current { background-color: rgba(141, 123, 104, 0.04); border-radius: 12px; padding: 18px 16px; margin-left: -16px; margin-right: -16px; border-left: 3px solid var(--accent-color); border-bottom: 1px solid transparent; margin-bottom: 20px; }
 .timeline-item.is-current .time-col { color: var(--accent-color); }
 
-/* ================= 7. BRANCH (COLLAPSIBLE ITINERARY) ================= */
+/* ================= 8. BRANCH ================= */
 .branch-container { display: flex; flex-direction: column; gap: 16px; margin-left: 15px; margin-bottom: 24px; padding-left: 15px; border-left: 1px dashed var(--border-color); }
 .branch-details { border-radius: 12px; transition: 0.3s; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); overflow: hidden; }
 
-/* Branch 層級配置 */
 .branch-details.best-plan { background-color: #FDFBF7; border-left: 4px solid var(--accent-color); }
 .branch-details.plan-a { background-color: #FFFFFF; border-left: 4px solid #D6CFC7; }
 .branch-details.plan-b { background-color: #F9F9F9; border-left: 4px solid #EAEAEA; }
@@ -168,7 +160,6 @@ body {
 .branch-details summary > span { display: flex; align-items: center; gap: 8px; }
 .branch-details summary > span i { width: 20px; text-align: center; font-size: 1.05rem; }
 
-/* 統一柔和的大地色 Branch Icons */
 .branch-icon-crown { color: var(--accent-color); }
 .branch-icon-sun { color: #A49381; }
 .branch-icon-umbrella { color: #8A8175; }
@@ -177,11 +168,10 @@ body {
 .toggle-icon { transition: transform 0.3s ease; color: #999; }
 .branch-details[open] .toggle-icon { transform: rotate(180deg); color: inherit; }
 
-/* Branch Timeline */
 .branch-timeline-item { display: flex; align-items: flex-start; border-bottom: 1px dashed var(--border-color); margin-bottom: 10px; padding-bottom: 10px; }
 .branch-timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-/* ================= 8. FLIGHT ================= */
+/* ================= 9. FLIGHT ================= */
 .flight-box { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 15px; margin-bottom: 15px; flex-wrap: nowrap; }
 .flight-box:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .flight-info-left { text-align: left; }
@@ -193,14 +183,15 @@ body {
 .info-value { font-size: 1.1rem; color: var(--text-color); font-weight: bold; }
 .flight-time-val { font-size: 1rem; }
 
-.flight-route { font-size: 1.5rem; color: var(--accent-color); font-weight: bold; display: flex; align-items: center; white-space: nowrap; gap: 5px; flex-shrink: 0; }
+/* ★ 優化 Flight 視覺層級：航線為主角、航空公司弱化、航班號碼縮小 */
+.flight-route { font-size: 1.6rem; color: var(--accent-color); font-weight: 900; display: flex; align-items: center; white-space: nowrap; gap: 5px; flex-shrink: 0; }
 .city-name { font-size: 0.8rem; color: #888; font-weight: normal; margin-left: 5px; }
 .flight-number-box { text-align: right; min-width: 80px; flex-shrink: 1; white-space: nowrap; display: flex; flex-direction: column; justify-content: center; }
 
-.airline-name { display: block; font-size: 0.75rem; color: #999; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-.flight-code { font-size: 1.8rem; color: var(--accent-color); font-weight: 900; letter-spacing: 1px; line-height: 1; }
+.airline-name { font-size: 0.65rem; color: #B0A69E; font-weight: bold; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.flight-code { font-size: 1.5rem; color: var(--text-color); font-weight: 800; letter-spacing: 0.5px; line-height: 1; }
 
-/* ================= 9. HOTEL ================= */
+/* ================= 10. HOTEL ================= */
 .hotel-box { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 15px; margin-bottom: 15px; flex-wrap: nowrap; }
 .hotel-box:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .hotel-address-box { align-items: flex-start; }
@@ -216,7 +207,7 @@ body {
 .map-btn:hover { background: #E6E2D6; color: var(--accent-color); }
 .map-btn i { margin-right: 6px; color: var(--accent-color); }
 
-/* ================= 10. SHOPPING ================= */
+/* ================= 11. SHOPPING ================= */
 .shop-category-title { font-size: 1.1rem; font-weight: bold; color: #fff; background-color: var(--accent-color); padding: 8px 15px; border-radius: 12px; margin-top: 25px; margin-bottom: 10px; display: flex; align-items: center; letter-spacing: 1px; }
 .shop-category-title i { margin-right: 8px; }
 .shop-nav { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; margin-bottom: 10px; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
@@ -230,7 +221,6 @@ body {
 .shop-img:active { transform: scale(0.95); opacity: 0.8; }
 .shop-info { flex: 1; padding-left: 15px; display: flex; flex-direction: column; justify-content: center; }
 
-/* ★ 購物清單名稱與已購買標籤 */
 .shop-name { font-size: 1rem; font-weight: bold; color: var(--text-color); margin-bottom: 4px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
 .shop-price { font-size: 0.9rem; color: var(--accent-color); font-weight: bold; margin-bottom: 4px; }
 .shop-loc { font-size: 0.8rem; color: #888; }
@@ -240,10 +230,8 @@ body {
 .shop-item.bought .shop-name-text { text-decoration: line-through; color: #888; }
 .shop-bought-badge { display: none; font-size: 0.7rem; color: #4CAF50; background: #E8F5E9; padding: 2px 6px; border-radius: 4px; font-weight: bold; letter-spacing: 0.5px; }
 .shop-item.bought .shop-bought-badge { display: inline-flex; align-items: center; gap: 3px; }
-
 .shop-memo-input { width: 100%; height: 200px; padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); resize: none; background: #FAFAFA; font-family: inherit; color: var(--text-color); font-size: 1rem; line-height: 1.5; box-sizing: border-box; }
 
-/* 圖片燈箱 */
 .menu-thumb { width: 150px; height: 100px; object-fit: cover; border-radius: 8px; cursor: pointer; margin-top: 10px; border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.2s; display: block; }
 .menu-thumb:active { transform: scale(0.95); opacity: 0.8; }
 .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow: auto; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
@@ -251,7 +239,7 @@ body {
 .lightbox-img.zoomed { max-width: none; max-height: none; width: 250%; cursor: zoom-out; }
 .close-lightbox { position: fixed; top: 20px; right: 20px; color: white; font-size: 30px; font-weight: bold; cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.5); width: 40px; height: 40px; line-height: 40px; text-align: center; border-radius: 50%; }
 
-/* ================= 11. SOS & UTILITIES ================= */
+/* ================= 12. SOS & UTILITIES ================= */
 .sos-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; margin: 10px 0; text-align: center; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; box-shadow: var(--card-shadow); transition: 0.2s; max-width: 100%; border: 1px solid rgba(0,0,0,0.05); }
 .sos-btn:active { transform: scale(0.98); }
 .sos-btn i { margin-right: 10px; font-size: 1.3rem; }
@@ -268,11 +256,10 @@ body {
 .pdf-btn i { margin-right: 6px; font-size: 1rem; }
 .pdf-btn:active, .pdf-btn:hover { background-color: #e6b0aa; color: white; }
 
-/* ================= 12. RESPONSIVE ================= */
+/* ================= 13. RESPONSIVE (MOBILE) ================= */
 @media screen and (min-width: 481px) {
     .hotel-address { max-width: 300px; }
 }
-
 @media screen and (max-width: 768px) {
     .sidebar { width: 140px; padding: 20px 12px; align-items: flex-start; }
     .content { margin-left: 140px; padding: 20px; }
@@ -288,11 +275,11 @@ body {
     .dot-icon { width: 20px; font-size: 0.8rem; margin-right: 8px; }
     .menu-text { font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     
-    /* 這裡不再將 .menu-badge display:none，而是給予正常顯示，僅調整大小與留白 */
-    .menu-badge { margin-left: 0; margin-top: 4px; font-size: 0.6rem; padding: 2px 6px; width: 100%; text-align: center; white-space: normal; line-height: 1.2; }
+    /* ★ 手機版絕對定位保留 Badge，不折行不擠壓 */
+    .menu-item { margin-bottom: 12px; }
+    .menu-badge { position: absolute; left: 34px; top: 30px; margin: 0; font-size: 0.6rem; padding: 2px 6px; }
 }
 
-/* ★ 480px 以下： Sidebar 放寬到 130px 確保可讀性，並隱藏 menu-badge */
 @media screen and (max-width: 480px) {
     .sidebar { width: 130px; padding: 20px 8px; }
     .content { margin-left: 130px; padding: 15px; }
@@ -300,20 +287,19 @@ body {
     .sidebar-group-title { font-size: 0.6rem; padding-left: 6px; margin-bottom: 6px; }
     .sidebar-group-toggle { display: none; } 
     
-    .menu-item { padding: 10px 8px; }
+    .menu-item { padding: 10px 8px; margin-bottom: 12px; }
     .menu-item.active::before { left: -6px; width: 2px; }
     
     .menu-icon, .dot-icon { width: 18px; font-size: 0.95rem; margin-right: 6px; }
     .dot-icon { font-size: 0.75rem; }
-    
     .menu-text { font-size: 0.8rem; }
     
-    /* 隱藏 Badge 避免手機版 Sidebar 太擠 */
+    /* 480px 以下徹底隱藏 Badge 確保乾淨 */
     .menu-badge { display: none; }
 
-    .flight-route { font-size: 1.15rem; }
+    .flight-route { font-size: 1.3rem; }
     .city-name { font-size: 0.7rem; margin-left: 3px; }
-    .flight-code { font-size: 1.25rem; }
+    .flight-code { font-size: 1.2rem; }
     .card { padding: 15px 12px; } 
     .time-col { width: 60px; font-size: 0.95rem; }
     .event-title { font-size: 1rem; } 
