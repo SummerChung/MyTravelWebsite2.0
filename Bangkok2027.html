@@ -3,50 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- [TEMPLATE] 請修改標題與 Favicon -->
     <title>曼谷 4 天 3 夜快樂行</title>
-    <!-- 設定網頁圖示 (Favicon) - 泰國大象 -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 font-size=%2280%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>🐘</text></svg>">
     
-    <!-- 引入 Font Awesome 與 共用 CSS (已移除所有內聯樣式) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="css/travel.css" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ================= 統一 Sidebar ================= -->
+    <!-- ================= Sidebar ================= -->
     <nav class="sidebar">
-        <div class="menu-item active" onclick="showPage('day1')">
-            <i class="fas fa-plane-arrival"></i> <span>Day 1</span>
+        <!-- Itinerary -->
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">
+                <span>Itinerary</span>
+                <i class="fas fa-chevron-down sidebar-group-toggle"></i>
+            </div>
+            <div class="sidebar-group-content">
+                <div class="menu-item active" onclick="showPage('day1')">
+                    <span class="dot-icon"></span>
+                    <span class="menu-text">Day 1</span>
+                </div>
+                <div class="menu-item" onclick="showPage('day2')">
+                    <span class="dot-icon"></span>
+                    <span class="menu-text">Day 2</span>
+                </div>
+                <div class="menu-item" onclick="showPage('day3')">
+                    <span class="dot-icon"></span>
+                    <span class="menu-text">Day 3</span>
+                </div>
+                <div class="menu-item" onclick="showPage('day4')">
+                    <span class="dot-icon"></span>
+                    <span class="menu-text">Day 4</span>
+                </div>
+            </div>
         </div>
-        <div class="menu-item" onclick="showPage('day2')">
-            <i class="fas fa-camera"></i> <span>Day 2</span>
+
+        <hr class="sidebar-divider">
+
+        <!-- Planning -->
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">
+                <span>Planning</span>
+                <i class="fas fa-chevron-down sidebar-group-toggle"></i>
+            </div>
+            <div class="sidebar-group-content">
+                <div class="menu-item" onclick="showPage('shopping')">
+                    <i class="fas fa-shopping-bag menu-icon"></i>
+                    <span class="menu-text">Shopping</span>
+                </div>
+                <div class="menu-item" onclick="showPage('backup-food')">
+                    <i class="fas fa-utensils menu-icon"></i>
+                    <span class="menu-text">Backup</span>
+                </div>
+            </div>
         </div>
-        <div class="menu-item" onclick="showPage('day3')">
-            <i class="fas fa-camera"></i> <span>Day 3</span>
-        </div>
-        <div class="menu-item" onclick="showPage('day4')">
-            <i class="fas fa-plane-departure"></i> <span>Day 4</span>
-        </div>
-        <div class="menu-item" onclick="showPage('shopping')">
-            <i class="fas fa-shopping-cart"></i> <span>購物</span>
-        </div>
-        <div class="menu-item" onclick="showPage('backup-food')">
-            <i class="fas fa-bookmark"></i> <span>備案</span>
-        </div>
-        <div class="menu-item" onclick="showPage('money')">
-            <i class="fas fa-calculator"></i> <span>匯率</span>
-        </div>
-        <div class="menu-item" onclick="showPage('sos')">
-            <i class="fas fa-exclamation-triangle"></i> <span>緊急</span>
+
+        <hr class="sidebar-divider">
+
+        <!-- Utilities -->
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">
+                <span>Utilities</span>
+                <i class="fas fa-chevron-down sidebar-group-toggle"></i>
+            </div>
+            <div class="sidebar-group-content">
+                <div class="menu-item" onclick="showPage('money')">
+                    <i class="fas fa-exchange-alt menu-icon"></i>
+                    <span class="menu-text">Currency</span>
+                </div>
+                <div class="menu-item sos-item" onclick="showPage('sos')">
+                    <i class="fas fa-exclamation-triangle menu-icon"></i>
+                    <span class="menu-text">SOS</span>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- ================= 右側內容區 ================= -->
-    <!-- ★ data-trip-id 用於獨立記憶體快取, data-currency-rate 用於匯率計算 ★ -->
+    <!-- ================= Content ================= -->
+    <!-- ★ data-trip-id 請確保與 travelData.js 一致 / data-currency-rate 設定泰國匯率 0.9 -->
     <main class="content" data-trip-id="bangkok2027" data-currency-rate="0.9">
-        <a href="index.html" class="back-home">↩ Dashboard</a>
+        <a href="index2.html" class="back-home">↩ Dashboard</a>
         
-        <!-- 統一 Header -->
+        <!-- [TEMPLATE] Travel Header -->
         <div class="travel-header">
             <div class="th-left">
                 <div class="th-flag">🇹🇭</div>
@@ -64,95 +104,89 @@
         <!-- ================= Day 1 ================= -->
         <div id="day1" class="page-section active">
             
-            <div class="card">
-                <h1>Day 1: 02/26 (五)</h1>
+            <!-- [TEMPLATE] Day Header -->
+            <div class="card day-header">
+                <div class="day-header-top">
+                    <h1>Day 1 <span class="day-date-badge">02/26 (Fri)</span></h1>
+                    <div class="day-header-right">
+                        <span class="day-weather">☀️ 26° / 34° ｜ ☔ 10%</span>
+                        <span class="day-progress">Day 1 / 4</span>
+                    </div>
+                </div>
                 <p>出發曼谷 • 快樂旅程開始</p>
             </div>
 
-            <!-- 天氣小工具 (曼谷 Bangkok) -->
-            <div class="card" style="min-height: 120px;">
-                <div style="font-size: 0.9rem; color: #888; margin-bottom: 5px;">
-                    <i class="fas fa-cloud-sun"></i> 當地天氣預報
-                </div>
-                <div class="weather-container">
-                    <a class="weatherwidget-io" href="https://forecast7.com/zh-tw/13d76100d50/bangkok/" data-label_1="BANGKOK" data-label_2="曼谷天氣" data-font="Arial" data-icons="Climacons Animated" data-mode="Forecast" data-days="3" data-theme="pure" data-accent="#8D7B68" data-textColor="#463F3A" data-highColor="#D35400" data-lowColor="#7FB3D5" data-sunColor="#F39C12" data-cloudColor="#BDC3C7" style="display: block; width: 100%; height: 100%;">BANGKOK WEATHER</a>
-                </div>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');</script>
-            </div>
-
-            <!-- 去程航班資訊 -->
+            <!-- [TEMPLATE] Flight Card -->
             <div class="card">
                 <h2>🛫 去程航班資訊</h2>
                 <div class="flight-box">
-                    <div class="flight-route">TPE <span class="city-name">台北</span> <i class="fas fa-long-arrow-alt-right" style="color: #ccc; margin: 0 5px;"></i> BKK <span class="city-name">曼谷</span></div>
-                    <div class="flight-number-box"><span class="airline-name">待填寫航空</span><span class="flight-code">XXX</span></div>
-                </div>
-                <div class="flight-box">
-                    <div class="info-group"><span class="info-label">起飛</span><span class="info-value">--:--</span></div>
-                    <!-- 飛行時間 -->
-                    <div class="info-group" style="text-align: center;">
-                        <span class="info-label">飛行時間</span>
-                        <span class="info-value" style="font-size: 1rem;">-h --m</span>
+                    <div class="flight-route">TPE <span class="city-name">台北</span> <i class="fas fa-long-arrow-alt-right"></i> BKK <span class="city-name">曼谷</span></div>
+                    <div class="flight-number-box">
+                        <span class="airline-name">待填寫航空</span>
+                        <span class="flight-code">XXX</span>
                     </div>
-                    <div class="info-group" style="text-align: right;"><span class="info-label">抵達</span><span class="info-value">--:--</span></div>
                 </div>
                 <div class="flight-box">
-                    <div class="info-group"><span class="info-label">座位</span><span class="info-value">待填寫</span></div>
+                    <div class="info-group flight-info-left">
+                        <span class="info-label">起飛</span><span class="info-value">--:--</span>
+                    </div>
+                    <div class="info-group flight-info-center">
+                        <span class="info-label">飛行時間</span><span class="info-value flight-time-val">-h --m</span>
+                    </div>
+                    <div class="info-group flight-info-right">
+                        <span class="info-label">抵達</span><span class="info-value">--:--</span>
+                    </div>
                 </div>
-                <div class="flight-box">
-                    <div class="info-group"><span class="info-label">託運行李</span><span class="info-value">-- kg</span></div>
-                    <div class="info-group" style="text-align: right;"><span class="info-label">手提行李</span><span class="info-value">- kg</span></div>
+                <div class="flight-box no-border">
+                    <div class="info-group flight-info-left">
+                        <span class="info-label">託運行李</span><span class="info-value">-- kg</span>
+                    </div>
+                    <div class="info-group flight-info-right">
+                        <span class="info-label">手提行李</span><span class="info-value">- kg</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- 住宿資訊 -->
+            <!-- [TEMPLATE] Hotel Card -->
             <div class="card">
                 <h2>🏨 住宿資訊</h2>
-                <div class="hotel-box">
+                <div class="hotel-box hotel-address-box">
                     <div class="info-group">
                         <span class="info-label">飯店名稱</span>
-                        <span class="info-value highlight">待填寫飯店</span>
+                        <span class="info-value hotel-name-large">待填寫飯店</span>
+                        <span class="hotel-address">飯店地址 (待補)</span>
                     </div>
+                    <a href="#" target="_blank" class="map-btn">
+                        <i class="fas fa-map-marker-alt"></i> Google Maps
+                    </a>
                 </div>
-                <div class="hotel-box">
-                    <div class="info-group">
-                        <span class="info-label">飯店地址 (點擊導航)</span>
-                        <a href="#" target="_blank" class="info-value" style="font-size: 0.9rem; text-decoration: underline;">
-                            點我導航 (待補網址)
-                        </a>
-                    </div>
-                </div>
-                <div class="hotel-box">
-                    <div class="info-group">
-                        <span class="info-label">Check-in</span>
-                        <span class="info-value">14:00 後</span>
-                    </div>
-                    <div class="info-group" style="text-align: right;">
-                        <span class="info-label">Check-out</span>
-                        <span class="info-value">11:00 前</span>
-                    </div>
+                <div class="hotel-box no-border">
+                    <div class="info-group flight-info-left"><span class="info-label">Check-in</span><span class="info-value">14:00 後</span></div>
+                    <div class="info-group flight-info-right"><span class="info-label">Check-out</span><span class="info-value">11:00 前</span></div>
                 </div>
             </div>
 
-            <!-- Day 1 詳細行程 -->
-            <div class="card">
+            <!-- [TEMPLATE] Timeline Block -->
+            <div class="card timeline-card">
                 <h2>🗓️ 今日行程</h2>
-                <div class="tip-box" style="margin-bottom: 20px; margin-top:0;">
-                    <span class="tip-title">💡 交通小撇步</span>
-                        曼谷機場前往市區可搭乘機場快線 (ARL) 或使用 Bolt/Grab 叫車。
-                </div>
                 
+                <div class="tip-box tip-box-top">
+                    <div class="tip-title"><i class="fas fa-lightbulb"></i> 交通小撇步</div>
+                    曼谷機場前往市區可搭乘機場快線 (ARL) 或使用 Bolt/Grab 叫車。
+                </div>
+
                 <div class="timeline-item">
                     <div class="time-col">待定</div>
                     <div class="event-col">
-                        <span class="event-title">前往桃園機場</span>
+                        <span class="event-title"><span class="event-title-icon">🚇</span><span>前往桃園機場</span></span>
                         <div class="event-desc"><span class="transport-tag">機場捷運</span></div>
                     </div>
                 </div>
-                <div class="timeline-item">
+
+                <div class="timeline-item no-border">
                     <div class="time-col">--:--</div>
                     <div class="event-col">
-                        <span class="event-title">抵達曼谷機場</span>
+                        <span class="event-title"><span class="event-title-icon">🛬</span><span>抵達曼谷機場</span></span>
                         <div class="event-desc">入境與領取行李</div>
                     </div>
                 </div>
@@ -162,16 +196,27 @@
 
         <!-- ================= Day 2 ================= -->
         <div id="day2" class="page-section">
-            <div class="card">
-                <h1>Day 2: 02/27 (六)</h1>
+            
+            <!-- [TEMPLATE] Day Header -->
+            <div class="card day-header">
+                <div class="day-header-top">
+                    <h1>Day 2 <span class="day-date-badge">02/27 (Sat)</span></h1>
+                    <div class="day-header-right">
+                        <span class="day-weather">☀️ 27° / 35° ｜ ☔ 5%</span>
+                        <span class="day-progress">Day 2 / 4</span>
+                    </div>
+                </div>
                 <p>曼谷探索</p>
             </div>
-            <div class="card">
+
+            <!-- [TEMPLATE] Timeline Block -->
+            <div class="card timeline-card">
                 <h2>🗓️ 行程內容</h2>
-                <div class="timeline-item">
+                
+                <div class="timeline-item no-border">
                     <div class="time-col">待定</div>
                     <div class="event-col">
-                        <span class="event-title">待填寫行程</span>
+                        <span class="event-title"><span class="event-title-icon">📍</span><span>待填寫行程</span></span>
                         <div class="event-desc">請提供行程資料</div>
                     </div>
                 </div>
@@ -180,17 +225,25 @@
 
         <!-- ================= Day 3 ================= -->
         <div id="day3" class="page-section">
-            <div class="card">
-                <h1>Day 3: 02/28 (日)</h1>
+            
+            <div class="card day-header">
+                <div class="day-header-top">
+                    <h1>Day 3 <span class="day-date-badge">02/28 (Sun)</span></h1>
+                    <div class="day-header-right">
+                        <span class="day-weather">🌤️ 26° / 34° ｜ ☔ 15%</span>
+                        <span class="day-progress">Day 3 / 4</span>
+                    </div>
+                </div>
                 <p>曼谷探索</p>
             </div>
 
-            <div class="card">
+            <div class="card timeline-card">
                 <h2>🗓️ 行程內容</h2>
-                <div class="timeline-item">
+                
+                <div class="timeline-item no-border">
                     <div class="time-col">待定</div>
                     <div class="event-col">
-                        <span class="event-title">待填寫行程</span>
+                        <span class="event-title"><span class="event-title-icon">📍</span><span>待填寫行程</span></span>
                         <div class="event-desc">請提供行程資料</div>
                     </div>
                 </div>
@@ -199,188 +252,171 @@
 
         <!-- ================= Day 4 ================= -->
         <div id="day4" class="page-section">
-            <div class="card">
-                <h1>Day 4: 03/01 (一)</h1>
+            
+            <!-- [TEMPLATE] Day Header -->
+            <div class="card day-header">
+                <div class="day-header-top">
+                    <h1>Day 4 <span class="day-date-badge">03/01 (Mon)</span></h1>
+                    <div class="day-header-right">
+                        <span class="day-weather">☀️ 26° / 33° ｜ ☔ 10%</span>
+                        <span class="day-progress">Day 4 / 4</span>
+                    </div>
+                </div>
                 <p>最後採買 • 平安歸國</p>
             </div>
 
-            <!-- 回程航班資訊 -->
+            <!-- [TEMPLATE] Return Flight -->
             <div class="card">
                 <h2>🛫 回程航班資訊</h2>
                 <div class="flight-box">
-                    <div class="flight-route">BKK <span class="city-name">曼谷</span> <i class="fas fa-long-arrow-alt-right" style="color: #ccc; margin: 0 5px;"></i> TPE <span class="city-name">台北</span></div>
-                    <div class="flight-number-box"><span class="airline-name">待填寫航空</span><span class="flight-code">XXX</span></div>
-                </div>
-                <div class="flight-box">
-                    <div class="info-group"><span class="info-label">起飛</span><span class="info-value">--:--</span></div>
-                    <div class="info-group" style="text-align: center;">
-                        <span class="info-label">飛行時間</span>
-                        <span class="info-value" style="font-size: 1rem;">-h --m</span>
+                    <div class="flight-route">BKK <span class="city-name">曼谷</span> <i class="fas fa-long-arrow-alt-right"></i> TPE <span class="city-name">台北</span></div>
+                    <div class="flight-number-box">
+                        <span class="airline-name">待填寫航空</span>
+                        <span class="flight-code">XXX</span>
                     </div>
-                    <div class="info-group" style="text-align: right;"><span class="info-label">抵達</span><span class="info-value">--:--</span></div>
                 </div>
                 <div class="flight-box">
-                    <div class="info-group"><span class="info-label">座位</span><span class="info-value">待填寫</span></div>
+                    <div class="info-group flight-info-left"><span class="info-label">起飛</span><span class="info-value">--:--</span></div>
+                    <div class="info-group flight-info-center"><span class="info-label">飛行時間</span><span class="info-value flight-time-val">-h --m</span></div>
+                    <div class="info-group flight-info-right"><span class="info-label">抵達</span><span class="info-value">--:--</span></div>
                 </div>
-                <div class="flight-box">
-                    <div class="info-group"><span class="info-label">託運行李</span><span class="info-value">-- kg</span></div>
-                    <div class="info-group" style="text-align: right;"><span class="info-label">手提行李</span><span class="info-value">- kg</span></div>
+                <div class="flight-box no-border">
+                    <div class="info-group flight-info-left"><span class="info-label">託運行李</span><span class="info-value">-- kg</span></div>
+                    <div class="info-group flight-info-right"><span class="info-label">手提行李</span><span class="info-value">- kg</span></div>
                 </div>
             </div>
 
-            <!-- Day 4 最後行程 -->
-            <div class="card">
+            <!-- [TEMPLATE] Timeline Block -->
+            <div class="card timeline-card">
                 <h2>🗓️ 最後行程</h2>
                 <div class="timeline-item">
                     <div class="time-col">待定</div>
                     <div class="event-col">
-                        <span class="event-title">退房 / 寄放行李</span>
+                        <span class="event-title"><span class="event-title-icon">🏨</span><span>退房 / 寄放行李</span></span>
                         <div class="event-desc">把握時間採買</div>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item no-border">
                     <div class="time-col">--:--</div>
                     <div class="event-col">
-                        <span class="event-title">前往機場</span>
+                        <span class="event-title"><span class="event-title-icon">✈️</span><span>前往機場</span></span>
                         <div class="event-desc"><span class="transport-tag">機捷/計程車</span></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= 購物清單頁面 ================= -->
+        <!-- ================= Shopping ================= -->
+        <!-- 保持模板一致，加入預設的購物區塊 -->
         <div id="shopping" class="page-section">
-            <div class="card">
+            <div class="card day-header">
                 <h1>🛍️ 必買清單</h1>
-                <p>點擊下方按鈕快速跳轉</p>
-                
-                <div class="shop-nav">
-                    <a href="#cat-food" class="shop-nav-btn"><i class="fas fa-cookie-bite"></i> 伴手禮/零食</a>
+                <div class="shop-nav mt-10">
+                    <a href="#cat-food" class="shop-nav-btn"><i class="fas fa-cookie-bite"></i> 伴手禮 / 零食</a>
                     <a href="#cat-life" class="shop-nav-btn"><i class="fas fa-home"></i> 生活雜貨</a>
-                    <a href="#cat-drug" class="shop-nav-btn"><i class="fas fa-pills"></i> 藥妝/香氛</a>
+                    <a href="#cat-drug" class="shop-nav-btn"><i class="fas fa-pills"></i> 藥妝 / 香氛</a>
                     <a href="#cat-other" class="shop-nav-btn"><i class="fas fa-star"></i> 其他</a>
                 </div>
             </div>
 
-            <!-- 分類範例 -->
-            <div id="cat-food" class="shop-category-title"><i class="fas fa-cookie-bite"></i> 伴手禮/零食 (範例)</div>
+            <!-- [TEMPLATE] Shopping Category -->
+            <div id="cat-food" class="shop-category-title"><i class="fas fa-cookie-bite"></i> 伴手禮 / 零食 (範例)</div>
             <div class="shop-item">
-                <img src="https://via.placeholder.com/150" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <img src="https://via.placeholder.com/150" alt="商品" class="shop-img" onclick="openImage(this)">
                 <div class="shop-info">
-                    <div class="shop-name">泰式奶茶手標茶</div>
+                    <div class="shop-name">
+                        <span class="shop-name-text">泰式奶茶手標茶</span>
+                        <span class="shop-bought-badge"><i class="fas fa-check"></i> 已購買</span>
+                    </div>
                     <div class="shop-price">฿ ???</div>
                     <div class="shop-loc">Big C / 伴手禮店</div>
                 </div>
                 <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
             </div>
 
-            <div id="cat-drug" class="shop-category-title"><i class="fas fa-pills"></i> 藥妝/香氛 (範例)</div>
+            <div id="cat-drug" class="shop-category-title"><i class="fas fa-pills"></i> 藥妝 / 香氛 (範例)</div>
             <div class="shop-item">
-                <img src="https://via.placeholder.com/150" alt="商品圖片" class="shop-img" onclick="openImage(this)">
+                <img src="https://via.placeholder.com/150" alt="商品" class="shop-img" onclick="openImage(this)">
                 <div class="shop-info">
-                    <div class="shop-name">薄荷鼻通 (POY-SIAN)</div>
+                    <div class="shop-name">
+                        <span class="shop-name-text">薄荷鼻通 (POY-SIAN)</span>
+                        <span class="shop-bought-badge"><i class="fas fa-check"></i> 已購買</span>
+                    </div>
                     <div class="shop-price">฿ ???</div>
                     <div class="shop-loc">藥局 / 便利商店</div>
                 </div>
                 <input type="checkbox" class="shop-check" onchange="toggleBought(this)">
             </div>
-
-            <!-- 購物備忘錄 -->
-            <div class="card" style="margin-top: 30px;">
+            
+            <div class="card timeline-card">
                 <h2>📝 購物備忘錄</h2>
-                <p style="font-size: 0.8rem; color: #888; margin-bottom: 10px;">內容會自動儲存，關閉網頁不遺失</p>
-                <textarea id="shopMemo" placeholder="在此輸入親友代購清單、衣服尺寸、優惠券代碼..." 
-                    oninput="saveMemo(this.value)"
-                    style="width: 100%; height: 200px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; line-height: 1.5; resize: none; box-sizing: border-box; background-color: #fafafa; color: #463F3A; font-family: inherit;"></textarea>
+                <textarea id="shopMemo" class="shop-memo-input" placeholder="在此輸入親友代購清單、衣服尺寸、優惠券代碼..." oninput="saveMemo(this.value)"></textarea>
             </div>
         </div>
 
-        <!-- ================= 備用餐廳清單 ================= -->
+        <!-- ================= Backup ================= -->
+        <!-- 保持模板一致，加入預設的備用名單區塊 -->
         <div id="backup-food" class="page-section">
-            <div class="card">
+            <div class="card day-header">
                 <h1>🍽️ 備用餐廳名單</h1>
                 <p>行程異動、公休或客滿時的口袋名單</p>
             </div>
-
+            
             <div class="shop-category-title"><i class="fas fa-utensils"></i> 泰式美食</div>
             <div class="shop-item">
                 <div class="shop-info">
-                    <div class="shop-name">
-                        <a href="#" target="_blank" class="event-link">
-                            建興酒家 (Somboon Seafood) <i class="fas fa-map-marker-alt" style="font-size:0.8em"></i>
-                        </a>
-                    </div>
-                    <div class="shop-loc">
-                        <span class="transport-tag">BTS站</span> 知名咖哩螃蟹
-                    </div>
+                    <div class="shop-name"><a href="#" target="_blank" class="event-link">建興酒家 (Somboon Seafood)</a></div>
+                    <div class="shop-loc"><span class="transport-tag">BTS站</span> 知名咖哩螃蟹</div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= 記帳與匯率 ================= -->
+        <!-- ================= Currency ================= -->
         <div id="money" class="page-section">
-            <div class="card">
+            <div class="card day-header">
                 <h1>💰 簡易匯率換算</h1>
-                <p>輸入泰銖 (THB)，換算台幣</p>
-                <p style="font-size: 0.85rem; color: #888; margin-bottom: 15px;">
-                    <i class="fas fa-info-circle"></i> 目前使用預設匯率：1 THB ≈ 0.9 TWD
-                </p>
-                <div class="result-box" id="twdResult" style="background: #333; color: #0f0; padding: 15px; font-family: monospace; font-size: 1.5rem; text-align: right; border-radius: 5px; margin-bottom: 10px;">NT$ 0</div>
-                
-                <div style="display: flex; gap: 10px;">
-                    <input type="number" inputmode="decimal" id="calcInput" class="calc-input" placeholder="輸入金額" oninput="convertCurrency(this.value)" style="flex: 1; padding: 10px; font-size: 1.2rem; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 5px;">
-                    <button onclick="clearCurrency()" style="background-color: #95a5a6; color: white; border: none; border-radius: 5px; padding: 0 20px; font-weight: bold; font-size: 1rem; height: 46px; cursor: pointer;">清除</button>
+                <p>輸入泰銖 (THB)，換算台幣 (以 0.9 計算)</p>
+            </div>
+            <div class="card timeline-card">
+                <div class="result-box" id="twdResult">NT$ 0</div>
+                <div class="calc-input-group">
+                    <input type="number" inputmode="decimal" id="calcInput" class="calc-input" placeholder="輸入金額" oninput="convertCurrency(this.value)">
+                    <button onclick="clearCurrency()" class="calc-btn">清除</button>
                 </div>
             </div>
         </div>
 
-        <!-- ================= 緊急求助頁面 (泰國版) ================= -->
+        <!-- ================= SOS ================= -->
         <div id="sos" class="page-section">
-            <div class="card">
+            <div class="card day-header">
                 <h1>🆘 緊急求助</h1>
                 <p>遇到緊急狀況請保持冷靜。</p>
+            </div>
+            <div class="card timeline-card">
+                <a href="tel:191" class="sos-btn bg-police"><i class="fas fa-phone-alt"></i> 191 泰國警察報案</a>
+                <a href="tel:1669" class="sos-btn bg-fire"><i class="fas fa-ambulance"></i> 1669 醫療緊急救護</a>
                 
-                <!-- 泰國通用緊急電話 -->
-                <a href="tel:191" class="sos-btn bg-police">
-                    <i class="fas fa-phone-alt"></i> 191 泰國警察報案
-                </a>
-                <a href="tel:1669" class="sos-btn bg-fire">
-                    <i class="fas fa-ambulance"></i> 1669 醫療緊急救護
-                </a>
-                
-                <p style="margin-top: 20px; font-weight: bold; border-top: 1px solid #eee; padding-top: 15px; color:#463F3A;">🏥 協助 / 駐外單位</p>
-                
-                <!-- 泰國觀光警察 -->
+                <div class="sos-divider-title">🏥 協助 / 駐外單位</div>
                 <a href="tel:1155" class="sos-btn bg-jnto">
                     <i class="fas fa-shield-alt"></i> 1155 泰國觀光警察
-                    <div style="font-size: 0.75rem; font-weight: normal; margin-top: 3px; display: block; width: 100%;">
-                        24小時 • 專助外國遊客
-                    </div>
+                    <div style="font-size: 0.75rem; font-weight: normal; margin-top: 3px; display: block; width: 100%;">24小時 • 專助外國遊客</div>
                 </a>
-
-                <!-- 台灣駐泰國辦事處 -->
                 <a href="tel:+66816664006" class="sos-btn bg-amda">
                     <i class="fas fa-passport"></i> 台灣駐泰國代表處
-                    <div style="font-size: 0.75rem; font-weight: normal; margin-top: 3px; display: block; width: 100%;">
-                        急難救助專線 (24H)
-                    </div>
+                    <div style="font-size: 0.75rem; font-weight: normal; margin-top: 3px; display: block; width: 100%;">急難救助專線 (24H)</div>
                 </a>
-
-                <p style="font-size: 0.8rem; color: #888; margin-top: 15px; text-align: center;">
-                    駐泰國台北經濟文化辦事處<br>40/64 Vibhavadi Rangsit 66
-                </p>
             </div>
         </div>
 
     </main>
 
-    <!-- 圖片放大燈箱容器 -->
+    <!-- 統一 Lightbox DOM (防呆用，即便無圖片亦保留結構) -->
     <div id="myLightbox" class="lightbox" onclick="closeLightbox(event)">
         <div class="close-lightbox">&times;</div>
         <img class="lightbox-img" id="lightboxImg" src="" onclick="toggleZoom(event)">
     </div>
 
-    <!-- ★★★ 引入統一共用 JS (無任何內聯程式碼) ★★★ -->
+    <!-- ★ 引入統一共用 JS -->
     <script src="js/travel.js"></script>
 
 </body>
